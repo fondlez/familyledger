@@ -21,3 +21,5 @@ There are actually two programs (scripts) for this application:
 |
 
 Download from Releases: https://github.com/anuber-Kronos/familyledger/releases/latest
+
+See the full documentation at: https://familyledger.readthedocs.io
