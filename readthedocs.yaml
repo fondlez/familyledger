@@ -7,12 +7,12 @@ version: 2
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
-  configuration: dev/docs/source/conf.py
+  configuration: dev/doc/source/conf.py
 
 # Optionally set the version of Python and requirements required to build your docs
 python:
   version: 3.5
   install:
-    - requirements: dev/docs/source/requirements.txt
+    - requirements: dev/doc/source/requirements.txt
     - method: pip
       path: .
