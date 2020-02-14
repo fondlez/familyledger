@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>familyledger.dataview &#8212; Family Ledger Documentation</title>
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cli.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Family Ledger</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contents.html">Contents</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web.html">Tutorial 1: Viewing items in your web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output_file.html">Tutorial 2: Viewing items from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output_console.html">Tutorial 3: Viewing items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../search_console.html">Tutorial 4: Searching items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../views.html">Views Explained</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_examples.html">More Command Line Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_ledger.html">Ledger - Program Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_ledger_web.html">Ledger Web - Program Arguments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bugs.html">Known Issues and Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugs.html#reporting-bugs">Reporting Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../author.html">Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../third_party.html">Credits</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for familyledger.dataview</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">A module for creating user-friendly views of WoW account item data.</span>
+
+<span class="sd">Copyright (C) 2020, fondlez &quot;Anuber&quot;-Kronos, fondlez at protonmail.com</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="n">account</span> <span class="kn">import</span> <span class="nn">AccountItemRecord</span> <span class="k">as</span> <span class="nn">RawViewRecord</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="n">utils</span><span class="o">.</span><span class="n">_i18n</span> <span class="kn">import</span> <span class="nn">n_</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="n">utils</span><span class="o">.</span><span class="n">_iterable</span> <span class="kn">import</span> <span class="nn">multisort_by_attribute</span>
+
+
+<span class="n">CONTAINER_LOCATION</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;inventory&#39;</span><span class="p">:</span> <span class="s1">&#39;bags&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bank&#39;</span><span class="p">:</span> <span class="s1">&#39;bank&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;player&#39;</span><span class="p">:</span> <span class="s1">&#39;player&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mail&#39;</span><span class="p">:</span> <span class="s1">&#39;mail&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bag01&#39;</span><span class="p">:</span> <span class="s1">&#39;bags&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bag02&#39;</span><span class="p">:</span> <span class="s1">&#39;bags&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bag03&#39;</span><span class="p">:</span> <span class="s1">&#39;bags&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bag04&#39;</span><span class="p">:</span> <span class="s1">&#39;bags&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bag05&#39;</span><span class="p">:</span> <span class="s1">&#39;bank&#39;</span><span class="p">,</span>  <span class="c1"># bank: bag</span>
+    <span class="s1">&#39;bag06&#39;</span><span class="p">:</span> <span class="s1">&#39;bank&#39;</span><span class="p">,</span>  <span class="c1"># bank: bag</span>
+    <span class="s1">&#39;bag07&#39;</span><span class="p">:</span> <span class="s1">&#39;bank&#39;</span><span class="p">,</span>  <span class="c1"># bank: bag</span>
+    <span class="s1">&#39;bag08&#39;</span><span class="p">:</span> <span class="s1">&#39;bank&#39;</span><span class="p">,</span>  <span class="c1"># bank: bag</span>
+    <span class="s1">&#39;bag09&#39;</span><span class="p">:</span> <span class="s1">&#39;bank&#39;</span><span class="p">,</span>  <span class="c1"># bank: bag</span>
+    <span class="s1">&#39;bag10&#39;</span><span class="p">:</span> <span class="s1">&#39;bank&#39;</span><span class="p">,</span>  <span class="c1"># bank: bag</span>
+<span class="p">}</span>
+<span class="sd">&quot;&quot;&quot;Mapping from container to generalized location.&quot;&quot;&quot;</span>
+
+<span class="n">DATAVIEWS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s1">&#39;character&#39;</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;mail&#39;</span><span class="p">,</span> <span class="s1">&#39;item&#39;</span><span class="p">,</span> <span class="s1">&#39;worn&#39;</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;factiongold&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;raw&#39;</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;List of available dataviews.&quot;&quot;&quot;</span>
+
+<span class="n">EQUIPPED_SLOT_NAME</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;01-Head&#39;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;02-Neck&#39;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;03-Shoulders&#39;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;04-Back&#39;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;05-Chest&#39;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;06-Shirt&#39;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;07-Tabard&#39;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39;08-Wrist&#39;</span><span class="p">,</span>
+    <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;09-Hands&#39;</span><span class="p">,</span>
+    <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;10-Waist&#39;</span><span class="p">,</span>
+    <span class="mi">11</span><span class="p">:</span> <span class="s1">&#39;11-Legs&#39;</span><span class="p">,</span>
+    <span class="mi">12</span><span class="p">:</span> <span class="s1">&#39;12-Feet&#39;</span><span class="p">,</span>
+    <span class="mi">13</span><span class="p">:</span> <span class="s1">&#39;13-Ring1&#39;</span><span class="p">,</span>
+    <span class="mi">14</span><span class="p">:</span> <span class="s1">&#39;14-Ring2&#39;</span><span class="p">,</span>
+    <span class="mi">15</span><span class="p">:</span> <span class="s1">&#39;15-Trinket1&#39;</span><span class="p">,</span>
+    <span class="mi">16</span><span class="p">:</span> <span class="s1">&#39;16-Trinket2&#39;</span><span class="p">,</span>
+    <span class="mi">17</span><span class="p">:</span> <span class="s1">&#39;17-Main Hand&#39;</span><span class="p">,</span>
+    <span class="mi">18</span><span class="p">:</span> <span class="s1">&#39;18-Off Hand&#39;</span><span class="p">,</span>
+    <span class="mi">19</span><span class="p">:</span> <span class="s1">&#39;19-Ranged&#39;</span><span class="p">,</span>
+    <span class="mi">20</span><span class="p">:</span> <span class="s1">&#39;20-Ammo&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="sd">&quot;&quot;&quot;Mapping from raw slot id of an equipped slot to slot name&quot;&quot;&quot;</span>
+
+<span class="n">ITEM_LINK_FORMAT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;twinhead&#39;</span><span class="p">:</span> <span class="s1">&#39;https://vanilla-twinhead.twinstar.cz/?item=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;wowhead&#39;</span><span class="p">:</span> <span class="s1">&#39;https://classic.wowhead.com/item=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;classicdb&#39;</span><span class="p">:</span> <span class="s1">&#39;https://classicdb.ch/?item=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="sd">&quot;&quot;&quot;Mapping from item link format to the link representation.&quot;&quot;&quot;</span>
+
+<span class="n">PRESENTATION_FORMATS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;factiongold&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;numerical&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;item_quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;factiongold&#39;</span><span class="p">,</span> <span class="s1">&#39;item_id&#39;</span><span class="p">,</span> <span class="s1">&#39;slot_id&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;item_link&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="sd">&quot;&quot;&quot;Mapping from presentation format to set of Possessions data fields.&quot;&quot;&quot;</span>
+
+<span class="n">CharacterViewRecord</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s1">&#39;CharacterViewRecord&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;realm&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;faction&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;character&#39;</span><span class="p">),</span> 
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_name&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_rarity&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_quantity&#39;</span><span class="p">),</span> 
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_link&#39;</span><span class="p">)])</span>
+<span class="sd">&quot;&quot;&quot;Data type for the &#39;character&#39; dataview.&quot;&quot;&quot;</span>
+
+<span class="n">LocationViewRecord</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s1">&#39;LocationViewRecord&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;realm&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;faction&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;character&#39;</span><span class="p">),</span> 
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_name&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_rarity&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_quantity&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">),</span> 
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_link&#39;</span><span class="p">)])</span>
+<span class="sd">&quot;&quot;&quot;Data type for the &#39;location&#39; dataview.&quot;&quot;&quot;</span>
+
+<span class="n">MailViewRecord</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s1">&#39;MailViewRecord&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;realm&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;faction&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;character&#39;</span><span class="p">),</span> 
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_name&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_quantity&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)])</span>
+<span class="sd">&quot;&quot;&quot;Data type for the &#39;mail&#39; dataview.&quot;&quot;&quot;</span>
+
+<span class="n">ItemViewRecord</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s1">&#39;ItemViewRecord&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;realm&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_name&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_rarity&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_quantity&#39;</span><span class="p">),</span> 
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;max&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_link&#39;</span><span class="p">)])</span>
+<span class="sd">&quot;&quot;&quot;Data type for the &#39;item&#39; dataview.&quot;&quot;&quot;</span>
+
+<span class="n">WornViewRecord</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s1">&#39;WornViewRecord&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;realm&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;faction&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;character&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;slot&#39;</span><span class="p">),</span> 
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_name&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_rarity&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;item_link&#39;</span><span class="p">)])</span>
+<span class="sd">&quot;&quot;&quot;Data type for the &#39;worn&#39; dataview.&quot;&quot;&quot;</span>
+
+<span class="n">GoldViewRecord</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s1">&#39;GoldViewRecord&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;realm&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;faction&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;character&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;gold&#39;</span><span class="p">)])</span>
+<span class="sd">&quot;&quot;&quot;Data type for the &#39;gold&#39; dataview.&quot;&quot;&quot;</span>
+
+<span class="n">FactionGoldViewRecord</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s1">&#39;FactionGoldViewRecord&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">n_</span><span class="p">(</span><span class="s1">&#39;realm&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;faction&#39;</span><span class="p">),</span> <span class="n">n_</span><span class="p">(</span><span class="s1">&#39;gold&#39;</span><span class="p">)])</span>
+<span class="sd">&quot;&quot;&quot;Data type for the &#39;factiongold&#39; dataview.&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="DataViewFactory"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.DataViewFactory">[docs]</a><span class="k">class</span> <span class="nc">DataViewFactory</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Factory for DataView objects based on view name.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initializes the factory class with a dispatch table.</span>
+<span class="sd">        </span>
+<span class="sd">        The dispatch table maps view names to view generator functions and the</span>
+<span class="sd">        view fields.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+            <span class="s1">&#39;Attributes&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;header_fields&#39;</span><span class="p">,</span> <span class="s1">&#39;data_gen&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_table</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;character&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">(</span>
+                <span class="n">CharacterViewRecord</span><span class="o">.</span><span class="n">_fields</span><span class="p">,</span> <span class="n">gen_view_character</span><span class="p">),</span>
+            <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">(</span>
+                <span class="n">LocationViewRecord</span><span class="o">.</span><span class="n">_fields</span><span class="p">,</span> <span class="n">gen_view_location</span><span class="p">),</span>
+            <span class="s1">&#39;mail&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">(</span>
+                <span class="n">MailViewRecord</span><span class="o">.</span><span class="n">_fields</span><span class="p">,</span> <span class="n">gen_view_mail</span><span class="p">),</span>
+            <span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">(</span>
+                <span class="n">ItemViewRecord</span><span class="o">.</span><span class="n">_fields</span><span class="p">,</span> <span class="n">gen_view_item</span><span class="p">),</span>
+            <span class="s1">&#39;worn&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">(</span>
+                <span class="n">WornViewRecord</span><span class="o">.</span><span class="n">_fields</span><span class="p">,</span> <span class="n">gen_view_worn</span><span class="p">),</span>
+            <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">(</span>
+                <span class="n">GoldViewRecord</span><span class="o">.</span><span class="n">_fields</span><span class="p">,</span> <span class="n">gen_view_gold</span><span class="p">),</span>
+            <span class="s1">&#39;factiongold&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">(</span>
+                <span class="n">FactionGoldViewRecord</span><span class="o">.</span><span class="n">_fields</span><span class="p">,</span> <span class="n">gen_view_factiongold</span><span class="p">),</span>
+            <span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">(</span>
+                <span class="n">RawViewRecord</span><span class="o">.</span><span class="n">_fields</span><span class="p">,</span> <span class="n">gen_view_raw</span><span class="p">),</span>
+        <span class="p">}</span>
+
+<div class="viewcode-block" id="DataViewFactory.dispatch"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.DataViewFactory.dispatch">[docs]</a>    <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view_name</span><span class="p">,</span> <span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns a Dataview object based on view name.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            view_name (str): view name.</span>
+<span class="sd">            input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">            args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            DataView: dataview object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">view_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">view_name</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">DataView</span><span class="p">(</span>
+            <span class="n">view_type</span><span class="o">.</span><span class="n">header_fields</span><span class="p">,</span> <span class="n">view_type</span><span class="o">.</span><span class="n">data_gen</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="DataView"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.DataView">[docs]</a><span class="k">class</span> <span class="nc">DataView</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represents a dataview type.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        header (tuple): tuple of strings listing the view field names.</span>
+<span class="sd">        data (:obj:`types.GeneratorType`): view data generator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">header</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="ItemHolders"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.ItemHolders">[docs]</a><span class="k">class</span> <span class="nc">ItemHolders</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Utility class identifying the character with max. count for an item.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        holders (dict): dicionary with character name key, item quantity value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">holder</span><span class="p">,</span> <span class="n">quantity</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">holders</span> <span class="o">=</span> <span class="p">{</span><span class="n">holder</span><span class="p">:</span> <span class="n">quantity</span><span class="p">}</span>
+
+<div class="viewcode-block" id="ItemHolders.update"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.ItemHolders.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">holder</span><span class="p">,</span> <span class="n">quantity</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates the item count for a given character name.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            holder (str): character name.</span>
+<span class="sd">            quantity (int): item count.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">holder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">holders</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">holders</span><span class="p">[</span><span class="n">holder</span><span class="p">]</span> <span class="o">+=</span> <span class="n">quantity</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">holders</span><span class="p">[</span><span class="n">holder</span><span class="p">]</span> <span class="o">=</span> <span class="n">quantity</span></div>
+
+<div class="viewcode-block" id="ItemHolders.max"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.ItemHolders.max">[docs]</a>    <span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the maximum item count and associated character name.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">holders</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">holders</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span></div></div>
+
+
+<div class="viewcode-block" id="query_dataview"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.query_dataview">[docs]</a><span class="k">def</span> <span class="nf">query_dataview</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates and queries a dataview.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">        </span>
+<span class="sd">    Return:</span>
+<span class="sd">        :obj:`types.GeneratorType`: filtered view data based on a query.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">view</span> <span class="o">=</span> <span class="n">create_view</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">search</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="create_view"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.create_view">[docs]</a><span class="k">def</span> <span class="nf">create_view</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">called_view</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates a dataview from raw input data.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">        </span>
+<span class="sd">    Return:</span>
+<span class="sd">        DataView: dataview object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">factory</span> <span class="o">=</span> <span class="n">DataViewFactory</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">called_view</span> <span class="ow">in</span> <span class="n">DATAVIEWS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">factory</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">called_view</span><span class="p">,</span> <span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">view</span> <span class="ow">in</span> <span class="n">DATAVIEWS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">factory</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">factory</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="s1">&#39;character&#39;</span><span class="p">,</span> <span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="gen_view_character"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.gen_view_character">[docs]</a><span class="k">def</span> <span class="nf">gen_view_character</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields data for a &#39;character&#39; dataview.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        :obj:`CharacterViewRecord`: &#39;character&#39; view data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aggregate</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">raw_row</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">RawViewRecord</span><span class="p">(</span><span class="o">*</span><span class="n">raw_row</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">container</span> <span class="o">==</span> <span class="s1">&#39;mail&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">include_mail</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="c1"># Creates a &quot;group-by&quot; data structure based on composite key of a dict</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">account</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">faction</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">character</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">item_name</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">aggregate</span><span class="p">:</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">row</span><span class="o">.</span><span class="n">item_rarity</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">row</span><span class="o">.</span><span class="n">item_quantity</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="ow">or</span> <span class="n">row</span><span class="o">.</span><span class="n">item_id</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">item_rarity</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">item_quantity</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">item_id</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">aggregate</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="p">(</span><span class="n">realm</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">faction</span><span class="p">,</span> <span class="n">character</span><span class="p">,</span> <span class="n">item_name</span><span class="p">)</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">CharacterViewRecord</span><span class="p">(</span>
+            <span class="n">realm</span><span class="p">,</span> 
+            <span class="n">account</span><span class="p">,</span>
+            <span class="n">faction</span><span class="p">,</span>
+            <span class="n">character</span><span class="p">,</span> 
+            <span class="n">item_name</span><span class="p">,</span> 
+            <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>  <span class="c1"># item_rarity</span>
+            <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># item_quantity</span>
+            <span class="n">format_item_link</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">args</span><span class="o">.</span><span class="n">db</span><span class="p">),</span>  <span class="c1"># item_link</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="gen_view_location"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.gen_view_location">[docs]</a><span class="k">def</span> <span class="nf">gen_view_location</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">only_mail</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields data for a &#39;location&#39; dataview.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        :obj:`LocationViewRecord`: &#39;location&#39; view data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aggregate</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">raw_row</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">RawViewRecord</span><span class="p">(</span><span class="o">*</span><span class="n">raw_row</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">only_mail</span> <span class="ow">and</span> <span class="n">row</span><span class="o">.</span><span class="n">container</span> <span class="o">!=</span> <span class="s1">&#39;mail&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">CONTAINER_LOCATION</span><span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">container</span><span class="p">]</span>
+        <span class="c1"># Creates a &quot;group-by&quot; data structure based on composite key of a dict</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">account</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">faction</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">character</span><span class="p">,</span> 
+                <span class="n">row</span><span class="o">.</span><span class="n">item_name</span><span class="p">,</span> <span class="n">location</span>
+            <span class="p">])</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">aggregate</span><span class="p">:</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">row</span><span class="o">.</span><span class="n">item_rarity</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">row</span><span class="o">.</span><span class="n">item_quantity</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="ow">or</span> <span class="n">row</span><span class="o">.</span><span class="n">item_id</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">item_rarity</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">item_quantity</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">item_id</span><span class="p">]</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="p">(</span>
+            <span class="n">realm</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">faction</span><span class="p">,</span> <span class="n">character</span><span class="p">,</span> <span class="n">item_name</span><span class="p">,</span> 
+            <span class="n">location</span><span class="p">)</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">LocationViewRecord</span><span class="p">(</span>
+                <span class="n">realm</span><span class="p">,</span> 
+                <span class="n">account</span><span class="p">,</span>
+                <span class="n">faction</span><span class="p">,</span>
+                <span class="n">character</span><span class="p">,</span> 
+                <span class="n">item_name</span><span class="p">,</span> 
+                <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>  <span class="c1"># item_rarity</span>
+                <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># item_quantity</span>
+                <span class="n">location</span><span class="p">,</span>
+                <span class="n">format_item_link</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">args</span><span class="o">.</span><span class="n">db</span><span class="p">)))</span>  <span class="c1"># item_link</span>
+
+    <span class="n">multisort_by_attribute</span><span class="p">(</span>
+        <span class="n">results</span><span class="p">,</span> 
+        <span class="p">(</span>
+            <span class="p">(</span><span class="s1">&#39;realm&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;faction&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> 
+            <span class="p">(</span><span class="s1">&#39;character&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;item_name&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> 
+            <span class="p">(</span><span class="s1">&#39;item_quantity&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">row</span></div>
+
+
+<div class="viewcode-block" id="gen_view_mail"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.gen_view_mail">[docs]</a><span class="k">def</span> <span class="nf">gen_view_mail</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields data for a &#39;mail&#39; dataview.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        :obj:`MailViewRecord`: &#39;mail&#39; view data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aggregate</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">raw_row</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">RawViewRecord</span><span class="p">(</span><span class="o">*</span><span class="n">raw_row</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">container</span> <span class="o">!=</span> <span class="s1">&#39;mail&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">CONTAINER_LOCATION</span><span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">container</span><span class="p">]</span>
+        <span class="c1"># Creates a &quot;group-by&quot; data structure based on composite key of a dict</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">account</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">faction</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">character</span><span class="p">,</span> 
+                <span class="n">row</span><span class="o">.</span><span class="n">item_name</span><span class="p">,</span> <span class="n">location</span>
+            <span class="p">])</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">aggregate</span><span class="p">:</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="n">row</span><span class="o">.</span><span class="n">item_quantity</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="p">(</span><span class="n">realm</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">faction</span><span class="p">,</span> <span class="n">character</span><span class="p">,</span> <span class="n">item_name</span><span class="p">,</span> 
+            <span class="n">location</span><span class="p">)</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">MailViewRecord</span><span class="p">(</span>
+                <span class="n">realm</span><span class="p">,</span> 
+                <span class="n">account</span><span class="p">,</span>
+                <span class="n">faction</span><span class="p">,</span>
+                <span class="n">character</span><span class="p">,</span> 
+                <span class="n">item_name</span><span class="p">,</span> 
+                <span class="n">value</span><span class="p">,</span>  <span class="c1"># item_quantity</span>
+                <span class="n">location</span><span class="p">))</span>
+
+    <span class="n">multisort_by_attribute</span><span class="p">(</span>
+        <span class="n">results</span><span class="p">,</span> 
+        <span class="p">(</span>
+            <span class="p">(</span><span class="s1">&#39;realm&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;faction&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> 
+            <span class="p">(</span><span class="s1">&#39;character&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;item_name&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> 
+            <span class="p">(</span><span class="s1">&#39;item_quantity&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">row</span></div>
+
+
+<div class="viewcode-block" id="gen_view_item"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.gen_view_item">[docs]</a><span class="k">def</span> <span class="nf">gen_view_item</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields data for an &#39;item&#39; dataview.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        :obj:`ItemViewRecord`: &#39;Item&#39; view data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aggregate</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">raw_row</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">RawViewRecord</span><span class="p">(</span><span class="o">*</span><span class="n">raw_row</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">container</span> <span class="o">==</span> <span class="s1">&#39;mail&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">include_mail</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="c1"># Only interested in stored items (not equipped)</span>
+        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">container</span> <span class="o">==</span> <span class="s1">&#39;player&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">item_key</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">item_name</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">item_rarity</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">item_id</span><span class="p">)])</span>
+        <span class="n">character_key</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">row</span><span class="o">.</span><span class="n">account</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">character</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">item_key</span> <span class="ow">in</span> <span class="n">aggregate</span><span class="p">:</span>
+            <span class="n">entry</span> <span class="o">=</span> <span class="n">aggregate</span><span class="p">[</span><span class="n">item_key</span><span class="p">]</span>
+            <span class="n">entry</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">row</span><span class="o">.</span><span class="n">item_quantity</span>
+            <span class="n">entry</span><span class="p">[</span><span class="s1">&#39;holders&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">character_key</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">item_quantity</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">item_key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> 
+                <span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">item_quantity</span><span class="p">,</span>
+                <span class="s1">&#39;holders&#39;</span><span class="p">:</span> <span class="n">ItemHolders</span><span class="p">(</span><span class="n">character_key</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">item_quantity</span><span class="p">)}</span>
+
+    <span class="k">for</span> <span class="n">item_key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">aggregate</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="p">(</span><span class="n">realm</span><span class="p">,</span> <span class="n">item_name</span><span class="p">,</span> <span class="n">item_rarity</span><span class="p">,</span> <span class="n">item_id_str</span><span class="p">)</span> <span class="o">=</span> <span class="n">item_key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
+        <span class="n">item_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">item_id_str</span><span class="p">)</span>
+        <span class="n">max_quantity</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="s1">&#39;holders&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">character</span><span class="p">)</span> <span class="o">=</span> <span class="nb">max</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">ItemViewRecord</span><span class="p">(</span>
+            <span class="n">realm</span><span class="p">,</span>
+            <span class="n">item_name</span><span class="p">,</span>
+            <span class="n">item_rarity</span><span class="p">,</span>
+            <span class="n">value</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> - </span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">character</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">max_quantity</span><span class="p">),</span>
+            <span class="n">format_item_link</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">db</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="gen_view_worn"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.gen_view_worn">[docs]</a><span class="k">def</span> <span class="nf">gen_view_worn</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields data for a &#39;worn&#39; dataview.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        :obj:`WornViewRecord`: &#39;worn&#39; view data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aggregate</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">raw_row</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">RawViewRecord</span><span class="p">(</span><span class="o">*</span><span class="n">raw_row</span><span class="p">)</span>
+        <span class="c1"># Only interested in player equipped items</span>
+        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">container</span> <span class="o">!=</span> <span class="s1">&#39;player&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">rarity_value</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">item_rarity</span><span class="p">:</span>
+            <span class="n">rarity_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">item_rarity</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="c1"># Creates a &quot;group-by&quot; data structure based on composite key of a dict</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">character</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">aggregate</span><span class="p">:</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="n">rarity_value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">rarity_value</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">WornViewRecord</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="p">,</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">account</span><span class="p">,</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">faction</span><span class="p">,</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">character</span><span class="p">,</span>
+                <span class="n">EQUIPPED_SLOT_NAME</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                    <span class="n">row</span><span class="o">.</span><span class="n">slot_id</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">-Unknown&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">slot_id</span><span class="p">)),</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">item_name</span><span class="p">,</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">item_rarity</span><span class="p">,</span>
+                <span class="n">format_item_link</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">item_id</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">db</span><span class="p">))</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">sort_by_totalrarity</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">character</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="n">multisort_by_attribute</span><span class="p">(</span>
+        <span class="n">results</span><span class="p">,</span> 
+        <span class="p">(</span>
+            <span class="p">(</span><span class="s1">&#39;realm&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;faction&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;character&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> 
+            <span class="p">(</span><span class="s1">&#39;slot&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)))</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">sort_by_totalrarity</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">row</span></div>
+
+
+<div class="viewcode-block" id="format_item_link"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.format_item_link">[docs]</a><span class="k">def</span> <span class="nf">format_item_link</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">db_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Formats an item id as an item link based on a format name.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        item_id (int): item id.</span>
+<span class="sd">        db_name (str): format name.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        string: item link.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">item_id</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ITEM_LINK_FORMAT</span><span class="p">[</span><span class="n">db_name</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">item_id</span><span class="p">))</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
+
+
+<div class="viewcode-block" id="gen_view_gold"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.gen_view_gold">[docs]</a><span class="k">def</span> <span class="nf">gen_view_gold</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields data for a &#39;gold&#39; dataview.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        :obj:`GoldViewRecord`: &#39;gold&#39; view data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aggregate</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">raw_row</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">RawViewRecord</span><span class="p">(</span><span class="o">*</span><span class="n">raw_row</span><span class="p">)</span>
+
+        <span class="c1"># Creates a &quot;group-by&quot; data structure based on composite key of a dict</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">account</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">faction</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">character</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">aggregate</span><span class="p">:</span>
+            <span class="c1"># The gold is the same for every item row on a character</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">gold</span> 
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="n">aggregate</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="p">(</span><span class="n">realm</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">faction</span><span class="p">,</span> <span class="n">character</span><span class="p">)</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">GoldViewRecord</span><span class="p">(</span>
+            <span class="n">realm</span><span class="p">,</span> 
+            <span class="n">account</span><span class="p">,</span>
+            <span class="n">faction</span><span class="p">,</span>
+            <span class="n">character</span><span class="p">,</span> 
+            <span class="n">value</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="gen_view_factiongold"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.gen_view_factiongold">[docs]</a><span class="k">def</span> <span class="nf">gen_view_factiongold</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields data for a &#39;factiongold&#39; dataview.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        :obj:`FactionGoldViewRecord`: &#39;factiongold&#39; view data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aggregate</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">raw_row</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">RawViewRecord</span><span class="p">(</span><span class="o">*</span><span class="n">raw_row</span><span class="p">)</span>
+        <span class="c1"># Creates a &quot;group-by&quot; data structure based on composite key of a dict</span>
+        <span class="n">groupby_key</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">faction</span><span class="p">])</span>
+        <span class="n">character_key</span> <span class="o">=</span> <span class="s1">&#39;=&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">character</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">groupby_key</span> <span class="ow">in</span> <span class="n">aggregate</span><span class="p">:</span>
+            <span class="c1"># The gold is the same for every item row on a character</span>
+            <span class="k">if</span> <span class="n">character_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                <span class="n">aggregate</span><span class="p">[</span><span class="n">groupby_key</span><span class="p">]</span> <span class="o">+=</span> <span class="n">row</span><span class="o">.</span><span class="n">gold</span>
+                <span class="n">seen</span><span class="p">[</span><span class="n">character_key</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">aggregate</span><span class="p">[</span><span class="n">groupby_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">gold</span>
+            <span class="n">seen</span><span class="p">[</span><span class="n">character_key</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="n">aggregate</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="p">(</span><span class="n">realm</span><span class="p">,</span> <span class="n">faction</span><span class="p">)</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">FactionGoldViewRecord</span><span class="p">(</span>
+            <span class="n">realm</span><span class="p">,</span> 
+            <span class="n">faction</span><span class="p">,</span>
+            <span class="n">value</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="gen_view_raw"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.gen_view_raw">[docs]</a><span class="k">def</span> <span class="nf">gen_view_raw</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields data for a &#39;raw&#39; dataview.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (:obj:`types.GeneratorType`): raw input data generator.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        :obj:`RawViewRecord`: &#39;raw&#39; view data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">input_data</span></div>
+
+
+<div class="viewcode-block" id="search"><a class="viewcode-back" href="../../familyledger.html#familyledger.dataview.search">[docs]</a><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">pattern</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Searches nested data for a pattern returning a list of matches.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_data: generator for list of tuples or a sequence of tuples.</span>
+<span class="sd">        pattern (str): regular expression pattern.</span>
+<span class="sd">        </span>
+<span class="sd">    Yield:</span>
+<span class="sd">        tuple: data row of fields.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">row</span>
+                <span class="k">break</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

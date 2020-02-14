@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>familyledger.ledger_web &#8212; Family Ledger Documentation</title>
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cli.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Family Ledger</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contents.html">Contents</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web.html">Tutorial 1: Viewing items in your web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output_file.html">Tutorial 2: Viewing items from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output_console.html">Tutorial 3: Viewing items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../search_console.html">Tutorial 4: Searching items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../views.html">Views Explained</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_examples.html">More Command Line Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_ledger.html">Ledger - Program Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_ledger_web.html">Ledger Web - Program Arguments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bugs.html">Known Issues and Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugs.html#reporting-bugs">Reporting Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../author.html">Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../third_party.html">Credits</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for familyledger.ledger_web</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The driving module for the web version of Family Ledger.</span>
+
+<span class="sd">Copyright (C) 2020, fondlez &quot;Anuber&quot;-Kronos, fondlez at protonmail.com</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">gettext</span>
+<span class="kn">import</span> <span class="nn">html</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">operator</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="kn">import</span> <span class="nn">remi.gui</span> <span class="k">as</span> <span class="nn">gui</span>
+<span class="kn">from</span> <span class="nn">remi</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">remi</span> <span class="kn">import</span> <span class="n">start</span>
+
+<span class="kn">from</span> <span class="nn">familyledger</span> <span class="kn">import</span> <span class="n">commandline</span>
+<span class="kn">from</span> <span class="nn">familyledger</span> <span class="kn">import</span> <span class="n">dataview</span>
+<span class="kn">from</span> <span class="nn">familyledger</span> <span class="kn">import</span> <span class="n">ledger</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_console</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils._exception</span> <span class="kn">import</span> <span class="n">set_exception_handler</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_path</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_logging</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils._logging</span> <span class="kn">import</span> <span class="n">get_log</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_timer</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_warcraft</span>
+
+
+<div class="viewcode-block" id="LedgerWeb"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb">[docs]</a><span class="k">class</span> <span class="nc">LedgerWeb</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Main appplication class.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initializes GUI server parent class.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span> <span class="o">=</span> <span class="n">get_log</span><span class="p">(</span><span class="s1">&#39;ledger.web&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LedgerWeb.main"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.main">[docs]</a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Re-enables logging and names a new log.</span>
+        <span class="sd">&quot;&quot;&quot;Sets up the core widgets of the graphical user interface.&quot;&quot;&quot;</span>
+        <span class="c1"># Check input arguments supplied</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pargs</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">pargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_checked_args</span><span class="p">,</span> <span class="o">*</span><span class="n">__</span> <span class="o">=</span> <span class="n">pargs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;No input arguments found&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Create &quot;master&quot; container which will hold top container and bottom </span>
+        <span class="c1"># container. Add widgets to it vertically</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">main_container</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="s1">&#39;10px&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">main_container</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span><span class="s1">&#39;border&#39;</span><span class="p">:</span> <span class="s1">&#39;1px solid white&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">main_container</span><span class="o">.</span><span class="n">set_layout_orientation</span><span class="p">(</span>
+            <span class="n">gui</span><span class="o">.</span><span class="n">Container</span><span class="o">.</span><span class="n">LAYOUT_VERTICAL</span><span class="p">)</span>
+
+        <span class="c1"># Create top container then add widgets to it horizontally</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">top_container</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="s1">&#39;0px auto&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">top_container</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span><span class="s1">&#39;border&#39;</span><span class="p">:</span> <span class="s1">&#39;1px solid white&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">top_container</span><span class="o">.</span><span class="n">set_layout_orientation</span><span class="p">(</span>
+            <span class="n">gui</span><span class="o">.</span><span class="n">Container</span><span class="o">.</span><span class="n">LAYOUT_HORIZONTAL</span><span class="p">)</span>
+            
+        <span class="c1"># Create middle container then add widgets to it horizontally</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">middle_container</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="s1">&#39;0px auto&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">middle_container</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span><span class="s1">&#39;border&#39;</span><span class="p">:</span> <span class="s1">&#39;1px solid white&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">middle_container</span><span class="o">.</span><span class="n">set_layout_orientation</span><span class="p">(</span>
+            <span class="n">gui</span><span class="o">.</span><span class="n">Container</span><span class="o">.</span><span class="n">LAYOUT_HORIZONTAL</span><span class="p">)</span>
+
+        <span class="c1"># Create bottom container then add widgets to it horizontally</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bottom_container</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="s1">&#39;0px auto 0px auto&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bottom_container</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span><span class="s1">&#39;border&#39;</span><span class="p">:</span> <span class="s1">&#39;1px solid white&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bottom_container</span><span class="o">.</span><span class="n">set_layout_orientation</span><span class="p">(</span>
+            <span class="n">gui</span><span class="o">.</span><span class="n">Container</span><span class="o">.</span><span class="n">LAYOUT_HORIZONTAL</span><span class="p">)</span>
+
+        <span class="c1"># Create widgets that will be placed in the top container</span>
+        <span class="c1"># - label for view dropdown</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label_view</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;View:&#39;</span><span class="p">),</span> 
+            <span class="n">width</span><span class="o">=</span><span class="s1">&#39;10%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="s1">&#39;10px&#39;</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;font-size&#39;</span><span class="p">:</span> <span class="s1">&#39;16px&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;font-weight&#39;</span><span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+            <span class="p">})</span>
+        <span class="c1"># - dropdown of views</span>
+        <span class="n">drop_view_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dataview</span><span class="o">.</span><span class="n">DATAVIEWS</span><span class="p">)</span>
+        <span class="c1"># -- the default view is assumed to be the first from the list if not  </span>
+        <span class="c1">#    provided by the user</span>
+        <span class="n">drop_view_default</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="o">.</span><span class="n">view</span> <span class="ow">or</span> <span class="n">dataview</span><span class="o">.</span><span class="n">DATAVIEWS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drop_view</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">DropDown</span><span class="o">.</span><span class="n">new_from_list</span><span class="p">(</span>
+            <span class="n">drop_view_list</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="s1">&#39;16%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="s1">&#39;10px 10px 10px 10px&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drop_view</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span>
+            <span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;font-weight&#39;</span><span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drop_view</span><span class="o">.</span><span class="n">select_by_value</span><span class="p">(</span><span class="n">drop_view_default</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drop_view</span><span class="o">.</span><span class="n">onchange</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_view_changed</span><span class="p">)</span>
+        <span class="c1"># - label for search box</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label_start</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Start search:&#39;</span><span class="p">),</span> 
+            <span class="n">width</span><span class="o">=</span><span class="s1">&#39;16%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="s1">&#39;10px&#39;</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;font-size&#39;</span><span class="p">:</span> <span class="s1">&#39;16px&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;font-weight&#39;</span><span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+            <span class="p">})</span>
+        <span class="c1"># - search box</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_search</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;10%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="s1">&#39;10px&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_search</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span><span class="s1">&#39;line-height&#39;</span><span class="p">:</span> <span class="s1">&#39;30px&#39;</span><span class="p">})</span>
+        <span class="c1"># - search box &#39;Search&#39; button</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_search</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Search&#39;</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;10%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="s1">&#39;10px&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_search</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span><span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="s1">&#39;#0066CC&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_search</span><span class="o">.</span><span class="n">onclick</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_search_pressed</span><span class="p">)</span>
+        <span class="c1"># - &#39;Refresh&#39; button</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_refresh</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Refresh&#39;</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;10%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="s1">&#39;10px&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_refresh</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span><span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="s1">&#39;#0066CC&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_refresh</span><span class="o">.</span><span class="n">onclick</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_refresh_pressed</span><span class="p">)</span>
+        <span class="c1"># - &#39;Close&#39; button</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_close</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Close&#39;</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;10%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="s1">&#39;10px&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_close</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span><span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="s1">&#39;#0066CC&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_close</span><span class="o">.</span><span class="n">onclick</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_close_pressed</span><span class="p">)</span>
+
+        <span class="c1"># Add those widgets to the top container</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">top_container</span><span class="o">.</span><span class="n">append</span><span class="p">((</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label_view</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop_view</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_search</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button_search</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">button_refresh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">button_close</span><span class="p">))</span>
+            
+        <span class="c1"># Create widgets that will be placed in the middle container</span>
+        <span class="c1"># - label for results count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label_results</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="s1">&#39;10px&#39;</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;font-size&#39;</span><span class="p">:</span> <span class="s1">&#39;16px&#39;</span><span class="p">,</span>
+            <span class="p">})</span>
+            
+        <span class="c1"># Add those widgets to the middle container</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">middle_container</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">label_results</span><span class="p">))</span>
+            
+        <span class="c1"># Add the top and middle container to the master container</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">main_container</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">top_container</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">middle_container</span><span class="p">))</span>
+        
+        <span class="c1"># At startup, set textinput widget as ready to accept input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_search</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;tabindex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_search</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;autofocus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;autofocus&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_search</span><span class="o">.</span><span class="n">onkeydown</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_enter_key</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_container</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.on_view_changed"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.on_view_changed">[docs]</a>    <span class="k">def</span> <span class="nf">on_view_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Runs when a user changes the dropdown list value to select a View.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data_refresh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_refresh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view_from_dropdown</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_data</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.on_refresh_pressed"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.on_refresh_pressed">[docs]</a>    <span class="k">def</span> <span class="nf">on_refresh_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Runs when a user clicks on the &#39;Refresh&#39; button.&quot;&quot;&quot;</span>
+        <span class="c1"># Reset the search textinput box</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_search</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1"># Reset the sorted status</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">already_sorted</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># (Re-)Fetch the data, create a view based on the GUI and display it</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_refresh</span><span class="p">()</span>
+        <span class="n">view_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view_from_dropdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">drop_view</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_refresh</span><span class="p">(</span><span class="n">view_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_data</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.on_search_pressed"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.on_search_pressed">[docs]</a>    <span class="k">def</span> <span class="nf">on_search_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Runs when a user clicks on the &#39;Search&#39; button.&quot;&quot;&quot;</span>
+        <span class="c1"># Fetches initial data only</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data_refresh</span><span class="p">()</span>
+            <span class="n">view_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view_from_dropdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">drop_view</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">view_refresh</span><span class="p">(</span><span class="n">view_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_data</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.data_refresh"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.data_refresh">[docs]</a>    <span class="k">def</span> <span class="nf">data_refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Helper function: (re-)fetches data.&quot;&quot;&quot;</span>
+        <span class="c1"># Fetch the raw data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vprint</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Fetching data ...&#39;</span><span class="p">))</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">ledger</span><span class="o">.</span><span class="n">gen_possessions_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_checked_args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;No data found.&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="c1"># Ensure the data is a not an iterator to enable multiple searches</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vprint</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;* Found </span><span class="si">%d</span><span class="s1"> data items.&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.view_refresh"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.view_refresh">[docs]</a>    <span class="k">def</span> <span class="nf">view_refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Helper function: creates a view from the fetched data.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vprint</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Creating view &quot;</span><span class="si">%s</span><span class="s1">&quot; ...&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">view_name</span><span class="p">)</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="n">dataview</span><span class="o">.</span><span class="n">create_view</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="n">view_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">view</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;No view found.&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">header</span>
+        <span class="c1"># Check that the user did not request the raw data which is already</span>
+        <span class="c1"># cached</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">view</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="c1"># Ensure the view&#39;s data is a not an iterator to enable </span>
+            <span class="c1"># multiple searches</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Requesting a &#39;raw&#39; view is the same as the original data.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+        <span class="c1"># Reset the sorted status</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">already_sorted</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vprint</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;* Found </span><span class="si">%d</span><span class="s1"> view entries.&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.display_data"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.display_data">[docs]</a>    <span class="k">def</span> <span class="nf">display_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Helper function: displays tabular data.&quot;&quot;&quot;</span>
+        <span class="c1"># Create the table widget if it does not exist, otherwise remove</span>
+        <span class="c1"># all its children</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;table&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="s1">&#39;0px auto 0px auto&#39;</span><span class="p">)</span>
+            
+        <span class="c1"># Register interest for table row clicks (to sort by clicking on header)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">on_table_row_click</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_table_row_click</span><span class="p">)</span>
+        
+        <span class="c1"># Generate the table row containing the table header names</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">TableRow</span><span class="p">()</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;data_header&#39;</span>
+        <span class="n">numerical_indices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">gold_indices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">url_indices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">header_index</span><span class="p">,</span> <span class="n">header_item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">):</span>
+            <span class="c1"># Track any numerical columns so they can be formatted</span>
+            <span class="k">if</span> <span class="n">header_item</span> <span class="ow">in</span> <span class="n">dataview</span><span class="o">.</span><span class="n">PRESENTATION_FORMATS</span><span class="p">[</span><span class="s1">&#39;numerical&#39;</span><span class="p">]:</span>
+                <span class="n">numerical_indices</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">header_index</span><span class="p">)</span>
+            <span class="c1"># Track any gold value columns so they can be formatted</span>
+            <span class="k">if</span> <span class="n">header_item</span> <span class="ow">in</span> <span class="n">dataview</span><span class="o">.</span><span class="n">PRESENTATION_FORMATS</span><span class="p">[</span><span class="s1">&#39;gold&#39;</span><span class="p">]:</span>
+                <span class="n">gold_indices</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">header_index</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">header_item</span> <span class="ow">in</span> <span class="n">dataview</span><span class="o">.</span><span class="n">PRESENTATION_FORMATS</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]:</span>
+                <span class="n">url_indices</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">header_index</span><span class="p">)</span>
+            <span class="n">table_item</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">TableItem</span><span class="p">(</span>
+                <span class="n">_</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">header_item</span><span class="p">)),</span> 
+                <span class="n">style</span><span class="o">=</span><span class="p">{</span>
+                    <span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="s1">&#39;#a4c2f5&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;font&#39;</span><span class="p">:</span> <span class="s1">&#39;Courier New&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;font-size&#39;</span><span class="p">:</span> <span class="s1">&#39;20px&#39;</span><span class="p">,</span>
+                <span class="p">})</span>
+            <span class="n">table_item</span><span class="o">.</span><span class="n">set_identifier</span><span class="p">(</span><span class="n">header_item</span><span class="p">)</span>
+            <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">table_item</span><span class="p">)</span>
+
+        <span class="c1"># Add the header row to the table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+        <span class="c1"># Check if the user searched for something and search the data</span>
+        <span class="n">search_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_search</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">search_string</span><span class="p">:</span>
+            <span class="c1"># Escape potentially user interface breaking characters</span>
+            <span class="n">search_string</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">search_string</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vprint</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;* searching &quot;</span><span class="si">%s</span><span class="s1">&quot; ...&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">search_string</span><span class="p">)</span>
+            <span class="n">search_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">search_string</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">search_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span>
+
+        <span class="c1"># Generate rows that will contain the table data</span>
+        <span class="n">results_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">_timer</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+        <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">row_index</span><span class="p">,</span> <span class="n">row_data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+                <span class="n">_console</span><span class="o">.</span><span class="n">progress_bar</span><span class="p">(</span><span class="n">search_data</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="o">.</span><span class="n">quiet</span><span class="p">)):</span>
+            <span class="n">results_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">TableRow</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">col_index</span><span class="p">,</span> <span class="n">row_item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row_data</span><span class="p">):</span>
+                <span class="n">str_row_item</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row_item</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">col_index</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">url_indices</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">detect_url</span><span class="p">(</span><span class="n">str_row_item</span><span class="p">):</span>
+                    <span class="c1"># Format gold values</span>
+                    <span class="k">if</span> <span class="n">col_index</span> <span class="ow">in</span> <span class="n">gold_indices</span><span class="p">:</span>
+                        <span class="n">str_row_item</span> <span class="o">=</span> <span class="n">_warcraft</span><span class="o">.</span><span class="n">format_gold</span><span class="p">(</span>
+                            <span class="n">row_item</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="o">.</span><span class="n">gold_format</span><span class="p">)</span>
+                    <span class="n">table_item</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">TableItem</span><span class="p">(</span><span class="n">str_row_item</span><span class="p">)</span>
+                    <span class="c1"># Format numerical values</span>
+                    <span class="k">if</span> <span class="n">col_index</span> <span class="ow">in</span> <span class="n">numerical_indices</span><span class="p">:</span>
+                        <span class="n">table_item</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span><span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;right&#39;</span><span class="p">})</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Track any URLs so they can be formatted as Link objects</span>
+                    <span class="n">table_item</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">TableItem</span><span class="p">()</span>
+                    <span class="n">table_item</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gui</span><span class="o">.</span><span class="n">Link</span><span class="p">(</span><span class="n">str_row_item</span><span class="p">,</span> <span class="n">str_row_item</span><span class="p">))</span>
+                <span class="c1"># Alternate row background color to improve row identification</span>
+                <span class="k">if</span> <span class="n">row_index</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">table_item</span><span class="o">.</span><span class="n">set_style</span><span class="p">({</span><span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffd&#39;</span><span class="p">})</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">table_item</span><span class="p">)</span>
+            <span class="c1"># Add the data row to the table</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">vprint</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;** data table complete. Rendering ...&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">results_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Add the table widget to the bottom container</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bottom_container</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+            <span class="c1"># Add the bottom container to the master container</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">main_container</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bottom_container</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vprint</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;** rendering complete.&#39;</span><span class="p">))</span>
+        <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        
+        <span class="c1"># Updating results count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label_results</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> results (</span><span class="si">{:.0f}</span><span class="s1"> seconds)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">results_count</span><span class="p">,</span> <span class="n">timer</span><span class="o">.</span><span class="n">elapsed</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.search"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.search">[docs]</a>    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Searches view data for a pattern, returning matched rows.</span>
+<span class="sd">        </span>
+<span class="sd">        The search for the pattern is case-insensitive.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            pattern (str): string containing a regular expression.</span>
+<span class="sd">        </span>
+<span class="sd">        Yield:</span>
+<span class="sd">            iterable: matching row from iterable view data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">):</span>
+                    <span class="k">yield</span> <span class="n">row</span>
+                    <span class="k">break</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.on_table_row_click"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.on_table_row_click">[docs]</a>    <span class="k">def</span> <span class="nf">on_table_row_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Runs when the user mouse clicks on a table row.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">identifier</span> <span class="o">==</span> <span class="s1">&#39;data_header&#39;</span><span class="p">):</span>
+            <span class="c1"># Prepares to sort based on the clicked header row and id (name).</span>
+            <span class="n">header_id</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">identifier</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vprint</span><span class="p">(</span>
+                <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Clicked on a header: </span><span class="si">%s</span><span class="s1">. Sorting ...&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">item</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">header_id</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">already_sorted</span> <span class="o">=</span> <span class="n">header_id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">display_data</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.sort"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.sort">[docs]</a>    <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sorts nested attributed data by attribute name.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            field (str): attribute name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">field</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;already_sorted&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">already_sorted</span> <span class="o">==</span> <span class="n">field</span><span class="p">:</span>
+            <span class="c1"># Reverses the sort if the data is already sorted by this field.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Sorts by field in reverse order.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">attrgetter</span><span class="p">(</span><span class="n">field</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.on_enter_key"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.on_enter_key">[docs]</a>    <span class="k">def</span> <span class="nf">on_enter_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">,</span> <span class="n">old_value</span><span class="p">,</span> <span class="n">keycode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Runs when the user clicks Enter in the text input box.</span>
+<span class="sd">        </span>
+<span class="sd">        If an Enter keycode is detected, the search text box &#39;onchange&#39; event </span>
+<span class="sd">        is activated and the search button pressed action is emulated.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">keycode</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;13&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">):</span>  <span class="c1"># 13 == ord(&#39;\r&#39;), 10 == ord(&#39;\n&#39;)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">text_search</span><span class="o">.</span><span class="n">onchange</span><span class="p">(</span><span class="n">old_value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">on_search_pressed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button_search</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.on_close_pressed"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.on_close_pressed">[docs]</a>    <span class="k">def</span> <span class="nf">on_close_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Runs when the user clicks on the Close button.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vprint</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Shutting down.&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.view_from_dropdown"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.view_from_dropdown">[docs]</a>    <span class="k">def</span> <span class="nf">view_from_dropdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Maps the View dropdown item text to a valid view name.&quot;&quot;&quot;</span>
+        <span class="c1"># Escape potentially user interface breaking characters</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dataview</span><span class="o">.</span><span class="n">DATAVIEWS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Invalid View dropdown value: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LedgerWeb.vprint"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.LedgerWeb.vprint">[docs]</a>    <span class="k">def</span> <span class="nf">vprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Helper function for verbose printing to console.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="detect_url"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.detect_url">[docs]</a><span class="k">def</span> <span class="nf">detect_url</span><span class="p">(</span><span class="n">link</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns whether input text starts with a simple and common URL type.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        link (str): potential URL.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if URL detected, False otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">link</span> <span class="ow">and</span> <span class="n">link</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s1">&#39;https:&#39;</span><span class="p">,</span> <span class="s1">&#39;http:&#39;</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="setup"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Sets up the debugging context for the main application.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Disables traceback output by default to be end user friendly</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">set_exception_handler</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">commandline</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">gui</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="c1"># - unless the user states they want to see it.</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">set_exception_handler</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">debug</span><span class="p">)</span>
+    <span class="n">internationalize</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">log_level</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+            <span class="n">log_level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span>
+        <span class="n">log_level</span> <span class="o">=</span> <span class="n">log_level</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">logging</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">log_level</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">log_disable</span><span class="p">:</span>
+            <span class="n">_logging</span><span class="o">.</span><span class="n">configure_root_logger</span><span class="p">(</span>
+                <span class="n">log_file</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.log&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_path</span><span class="o">.</span><span class="n">extless</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span>
+                <span class="n">log_level</span><span class="o">=</span><span class="n">log_level</span><span class="p">)</span>
+        <span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">pdb</span>
+            <span class="kn">import</span> <span class="nn">traceback</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+            <span class="n">pdb</span><span class="o">.</span><span class="n">post_mortem</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">get_log</span><span class="p">(</span><span class="s1">&#39;ledger_web&#39;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Uncaught exception </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
+            <span class="k">raise</span></div>
+
+
+<div class="viewcode-block" id="internationalize"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.internationalize">[docs]</a><span class="k">def</span> <span class="nf">internationalize</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="c1"># Internationalizes this module via the gettext standard library module.</span>
+    <span class="c1"># Unconventional global variable placement is to enable a non-fallback</span>
+    <span class="c1"># default language supplied from the system locale or the user.</span>
+    <span class="c1"># PYINSTALLER: data files must be bundle-aware</span>
+    <span class="n">mo_path</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="s1">&#39;_MEIPASS&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+    <span class="n">mo_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mo_path</span><span class="p">,</span> <span class="s1">&#39;share/locale&#39;</span><span class="p">)</span>
+    <span class="n">translate</span> <span class="o">=</span> <span class="n">gettext</span><span class="o">.</span><span class="n">translation</span><span class="p">(</span>
+        <span class="s1">&#39;ledger_web&#39;</span><span class="p">,</span> <span class="n">localedir</span><span class="o">=</span><span class="n">mo_path</span><span class="p">,</span> <span class="n">languages</span><span class="o">=</span><span class="n">ledger</span><span class="o">.</span><span class="n">user_lang</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">lang</span><span class="p">),</span> 
+        <span class="n">fallback</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">global</span> <span class="n">_</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">translate</span><span class="o">.</span><span class="n">gettext</span></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger_web.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Starts the main application.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Use ths same types of critical inputs and validation as the Ledger </span>
+    <span class="c1"># program.</span>
+    <span class="n">checked_args</span> <span class="o">=</span> <span class="n">ledger</span><span class="o">.</span><span class="n">validate_inputs</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">gui</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Start the graphical user interface.</span>
+    <span class="n">start</span><span class="p">(</span>
+        <span class="n">LedgerWeb</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Family Ledger - Ledger Web&#39;</span><span class="p">),</span> <span class="n">standalone</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+        <span class="n">userdata</span><span class="o">=</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">checked_args</span><span class="p">))</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">setup</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

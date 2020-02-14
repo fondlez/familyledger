@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>utils package &#8212; Family Ledger Documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cli.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Family Ledger</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../contents.html">Contents</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web.html">Tutorial 1: Viewing items in your web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_file.html">Tutorial 2: Viewing items from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_console.html">Tutorial 3: Viewing items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search_console.html">Tutorial 4: Searching items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../views.html">Views Explained</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../commandline_examples.html">More Command Line Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_ledger.html">Ledger - Program Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_ledger_web.html">Ledger Web - Program Arguments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Known Issues and Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html#reporting-bugs">Reporting Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../author.html">Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../third_party.html">Credits</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">utils package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-utils._console">utils._console module</a></li>
+<li><a class="reference internal" href="#module-utils._exception">utils._exception module</a></li>
+<li><a class="reference internal" href="#module-utils._file">utils._file module</a></li>
+<li><a class="reference internal" href="#module-utils._i18n">utils._i18n module</a></li>
+<li><a class="reference internal" href="#module-utils._iterable">utils._iterable module</a></li>
+<li><a class="reference internal" href="#module-utils._logging">utils._logging module</a></li>
+<li><a class="reference internal" href="#module-utils._path">utils._path module</a></li>
+<li><a class="reference internal" href="#module-utils._timer">utils._timer module</a></li>
+<li><a class="reference internal" href="#module-utils._warcraft">utils._warcraft module</a></li>
+<li><a class="reference internal" href="#module-utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/_code/utils.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="utils-package">
+<h1>utils package</h1>
+<div class="section" id="submodules">
+<h2>Submodules</h2>
+</div>
+<div class="section" id="module-utils._console">
+<span id="utils-console-module"></span><h2>utils._console module</h2>
+<p>A module for console utilities.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="function">
+<dt id="utils._console.progress_bar">
+<code class="sig-prename descclassname">utils._console.</code><code class="sig-name descname">progress_bar</code><span class="sig-paren">(</span><em class="sig-param">*pargs</em>, <em class="sig-param">bar_format=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_console.html#progress_bar"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Customizes the output of <a class="reference external" href="https://github.com/tqdm/tqdm">tqdm</a> ‘s progress bar.</p>
+<p>The default bar format has been changed to eliminate the output of a “rate”,
+i.e. the default ‘it/s’ (iterations per second) part of the output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*pargs</strong> – positional arguments to pass through.</p></li>
+<li><p><strong>bar_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – customized progress bar format.</p></li>
+<li><p><strong>*kwargs</strong> – keyword arguments to pass through.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a customized iterable.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tqdm</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils._exception">
+<span id="utils-exception-module"></span><h2>utils._exception module</h2>
+<p>A module for exception handling utilities.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="function">
+<dt id="utils._exception.set_exception_handler">
+<code class="sig-prename descclassname">utils._exception.</code><code class="sig-name descname">set_exception_handler</code><span class="sig-paren">(</span><em class="sig-param">exception_type</em>, <em class="sig-param">exception</em>, <em class="sig-param">traceback</em>, <em class="sig-param">debug_hook=&lt;built-in function excepthook&gt;</em>, <em class="sig-param">debug_flag=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_exception.html#set_exception_handler"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Sets the default exception handler based on an argument flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exception_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – exception type.</p></li>
+<li><p><strong>exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – exception instance.</p></li>
+<li><p><strong>traceback</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.TracebackType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.TracebackType</span></code></a>) – traceback object.</p></li>
+<li><p><strong>debug_hook</strong> (<em>function</em>) – hook.</p></li>
+<li><p><strong>debug_flag</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – flag to determine whether to set a default exception
+handler or to create customized output.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils._file">
+<span id="utils-file-module"></span><h2>utils._file module</h2>
+<p>A module for filesystem utilities.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="function">
+<dt id="utils._file.remove_file_silent">
+<code class="sig-prename descclassname">utils._file.</code><code class="sig-name descname">remove_file_silent</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_file.html#remove_file_silent"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Removes a file silently even if it does not exist.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._file.unixoutput">
+<code class="sig-prename descclassname">utils._file.</code><code class="sig-name descname">unixoutput</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_file.html#unixoutput"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Opens filename for output or writes to stdout in a Unix-like manner.</p>
+<p>Command line tools that follow Unix conventions are expected to write to
+standard output (stdout) when an argument ‘-‘ is passed to them, otherwise
+the argument filename is opened as normal for output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – filename for output.</p></li>
+<li><p><strong>**kwargs</strong> – variable keyword arguments to pass through.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>IO stream object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils._i18n">
+<span id="utils-i18n-module"></span><h2>utils._i18n module</h2>
+<p>A module for internationalization (i18n) utilities.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="function">
+<dt id="utils._i18n.n_">
+<code class="sig-prename descclassname">utils._i18n.</code><code class="sig-name descname">n_</code><span class="sig-paren">(</span><em class="sig-param">message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_i18n.html#n_"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns its input unchanged.</p>
+<p>A transparent function for gettext language translation to protect members
+of data structures from translation before they are presented to a user.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils._iterable">
+<span id="utils-iterable-module"></span><h2>utils._iterable module</h2>
+<p>A module containing utilities for searching and manipulating iterables.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="function">
+<dt id="utils._iterable.first_true">
+<code class="sig-prename descclassname">utils._iterable.</code><code class="sig-name descname">first_true</code><span class="sig-paren">(</span><em class="sig-param">iterable</em>, <em class="sig-param">default=None</em>, <em class="sig-param">pred=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_iterable.html#first_true"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns the first true value from an iterable or a default value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iterable</strong> – any iterable.</p></li>
+<li><p><strong>pred</strong> – a function returning truthy or falsy.</p></li>
+<li><p><strong>default</strong> – a default value.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Supplying a function acting as a predicate via the <code class="docutils literal notranslate"><span class="pre">pred</span></code> argument will
+use that function for truth testing. If <code class="docutils literal notranslate"><span class="pre">pred</span></code> is None, items in the
+iterable are directly checked as truthy. If no truthy value is found, a
+default is returned.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._iterable.index_or_none">
+<code class="sig-prename descclassname">utils._iterable.</code><code class="sig-name descname">index_or_none</code><span class="sig-paren">(</span><em class="sig-param">seq</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_iterable.html#index_or_none"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns the index of a value in an iterable if present, otherwise None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seq</strong> – iterable.</p></li>
+<li><p><strong>value</strong> – value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._iterable.multisort_by_attribute">
+<code class="sig-prename descclassname">utils._iterable.</code><code class="sig-name descname">multisort_by_attribute</code><span class="sig-paren">(</span><em class="sig-param">inplace</em>, <em class="sig-param">sortspecs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_iterable.html#multisort_by_attribute"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>In-place sorts nested attributed sequences by multiple attributes.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Vehicle</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Vehicle&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;owner&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">car_park</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;Mercedes&#39;</span><span class="p">,</span> <span class="s1">&#39;F500&#39;</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="s1">&#39;longbottom&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;BMW&#39;</span><span class="p">,</span> <span class="s1">&#39;X3&#39;</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="s1">&#39;malfoy&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;Maclaren&#39;</span><span class="p">,</span> <span class="s1">&#39;F1&#39;</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="s1">&#39;voldemort&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;Bugatti&#39;</span><span class="p">,</span> <span class="s1">&#39;Veyron&#39;</span><span class="p">,</span> <span class="mi">2009</span><span class="p">,</span> <span class="s1">&#39;potter&#39;</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sortspecs</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">multisort_by_attribute</span><span class="p">(</span><span class="n">car_park</span><span class="p">,</span> <span class="n">sortspecs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pp</span> <span class="o">=</span> <span class="n">pprint</span><span class="o">.</span><span class="n">PrettyPrinter</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">car_park</span><span class="p">)</span>
+<span class="go">[Vehicle(make=&#39;BMW&#39;, model=&#39;X3&#39;, year=2012, owner=&#39;malfoy&#39;),</span>
+<span class="go"> Vehicle(make=&#39;Bugatti&#39;, model=&#39;Veyron&#39;, year=2009, owner=&#39;potter&#39;),</span>
+<span class="go"> Vehicle(make=&#39;Maclaren&#39;, model=&#39;F1&#39;, year=2003, owner=&#39;voldemort&#39;),</span>
+<span class="go"> Vehicle(make=&#39;Mercedes&#39;, model=&#39;F500&#39;, year=2003, owner=&#39;longbottom&#39;)]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inplace</strong> – iterable containing sequences with one or more attributes.</p></li>
+<li><p><strong>sortspecs</strong> – tuples of attribute name and a sorting reverse flag.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils._logging">
+<span id="utils-logging-module"></span><h2>utils._logging module</h2>
+<p>A module to support use of the built-in logging facility.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="function">
+<dt id="utils._logging.configure_root_logger">
+<code class="sig-prename descclassname">utils._logging.</code><code class="sig-name descname">configure_root_logger</code><span class="sig-paren">(</span><em class="sig-param">log_file=None</em>, <em class="sig-param">log_level=None</em>, <em class="sig-param">format=None</em>, <em class="sig-param">date_format=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_logging.html#configure_root_logger"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Configures basic logging of the root logger.</p>
+<p>If a log filename is supplied, the root logger is configured to log to file,
+otherwise it is configured to log to <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – log filename.</p></li>
+<li><p><strong>log_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – log level.</p></li>
+<li><p><strong>format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – log message format.</p></li>
+<li><p><strong>date_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – datetime format.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._logging.disable_logging">
+<code class="sig-prename descclassname">utils._logging.</code><code class="sig-name descname">disable_logging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_logging.html#disable_logging"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Disables logging globally.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._logging.get_log">
+<code class="sig-prename descclassname">utils._logging.</code><code class="sig-name descname">get_log</code><span class="sig-paren">(</span><em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_logging.html#get_log"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns a named logger object or the root logger.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._logging.re_enable_logging">
+<code class="sig-prename descclassname">utils._logging.</code><code class="sig-name descname">re_enable_logging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_logging.html#re_enable_logging"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Re-enables logging globally.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils._path">
+<span id="utils-path-module"></span><h2>utils._path module</h2>
+<p>A module for retrieving and manipulating path information.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="function">
+<dt id="utils._path.extless">
+<code class="sig-prename descclassname">utils._path.</code><code class="sig-name descname">extless</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_path.html#extless"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns the filename without a file extension from a path.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._path.gen_find_file">
+<code class="sig-prename descclassname">utils._path.</code><code class="sig-name descname">gen_find_file</code><span class="sig-paren">(</span><em class="sig-param">filepat</em>, <em class="sig-param">top</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_path.html#gen_find_file"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields the paths matching a file pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepat</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Unix shell-style wildcard pattern.</p></li>
+<li><p><strong>top</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – toplevel directory to begin recursively searching.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>str</em> – matching path string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._path.splitall">
+<code class="sig-prename descclassname">utils._path.</code><code class="sig-name descname">splitall</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_path.html#splitall"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns all the components of a path, including split on path separator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – path string.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of path components.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils._timer">
+<span id="utils-timer-module"></span><h2>utils._timer module</h2>
+<p>A module for a stopwatch timer.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="class">
+<dt id="utils._timer.Timer">
+<em class="property">class </em><code class="sig-prename descclassname">utils._timer.</code><code class="sig-name descname">Timer</code><span class="sig-paren">(</span><em class="sig-param">func=&lt;built-in function perf_counter&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_timer.html#Timer"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A stopwtch timer class for timing of arbitrary code blocks.</p>
+<p>Ref: Recipe 13.13 in ‘Python Cookbook’, Third Edition, by David Beazley
+and Brian k. Jones</p>
+<dl class="method">
+<dt id="utils._timer.Timer.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_timer.html#Timer.reset"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="utils._timer.Timer.running">
+<em class="property">property </em><code class="sig-name descname">running</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="utils._timer.Timer.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_timer.html#Timer.start"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="utils._timer.Timer.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_timer.html#Timer.stop"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils._warcraft">
+<span id="utils-warcraft-module"></span><h2>utils._warcraft module</h2>
+<p>A module for handling information peculiar to World of Warcraft.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="function">
+<dt id="utils._warcraft.decimal_gold">
+<code class="sig-prename descclassname">utils._warcraft.</code><code class="sig-name descname">decimal_gold</code><span class="sig-paren">(</span><em class="sig-param">copper_value</em>, <em class="sig-param">disable=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_warcraft.html#decimal_gold"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Converts the copper value of WoW currency to decimal gold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>copper_value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – copper value of WoW currency.</p></li>
+<li><p><strong>disable</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – flag to disable function and pass through the value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>decimal gold value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._warcraft.format_gold">
+<code class="sig-prename descclassname">utils._warcraft.</code><code class="sig-name descname">format_gold</code><span class="sig-paren">(</span><em class="sig-param">copper_value</em>, <em class="sig-param">format=None</em>, <em class="sig-param">disable=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils/_warcraft.html#format_gold"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Converts the copper value of WoW currency to its denominations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>copper_value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – copper value of WoW currency.</p></li>
+<li><p><strong>format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Python format() string with value replacements of
+<code class="docutils literal notranslate"><span class="pre">{gold}</span></code>, <code class="docutils literal notranslate"><span class="pre">{silver}</span></code> and <code class="docutils literal notranslate"><span class="pre">{copper}</span></code> available.</p></li>
+<li><p><strong>disable</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – flag to disable function and pass through the value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>formatted gold string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils">
+<span id="module-contents"></span><h2>Module contents</h2>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

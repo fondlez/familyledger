@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>familyledger.commandline &#8212; Family Ledger Documentation</title>
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cli.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Family Ledger</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contents.html">Contents</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web.html">Tutorial 1: Viewing items in your web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output_file.html">Tutorial 2: Viewing items from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output_console.html">Tutorial 3: Viewing items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../search_console.html">Tutorial 4: Searching items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../views.html">Views Explained</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_examples.html">More Command Line Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_ledger.html">Ledger - Program Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference_ledger_web.html">Ledger Web - Program Arguments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bugs.html">Known Issues and Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugs.html#reporting-bugs">Reporting Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../author.html">Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../third_party.html">Credits</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for familyledger.commandline</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">A module for parsing command line application arguments.</span>
+
+<span class="sd">Copyright (C) 2020, fondlez &quot;Anuber&quot;-Kronos, fondlez at protonmail.com</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">filedialog</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">Tk</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">dataview</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="n">utils</span><span class="o">.</span><span class="n">_i18n</span> <span class="kn">import</span> <span class="nn">n_</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">version</span>
+
+
+<span class="n">FORMAT_EXTENSION</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;csv&#39;</span><span class="p">:</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;excel&#39;</span><span class="p">:</span> <span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tsv&#39;</span><span class="p">:</span> <span class="s1">&#39;.tsv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unix&#39;</span><span class="p">:</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="sd">&quot;&quot;&quot;Mapping from output format type to filename extension.&quot;&quot;&quot;</span>
+
+<span class="n">EXPORT_FORMATS</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;excel&#39;</span><span class="p">,</span> <span class="s1">&#39;tsv&#39;</span><span class="p">,</span> <span class="s1">&#39;unix&#39;</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;Available formats for export to file.&quot;&quot;&quot;</span>
+
+<span class="n">CONSOLE_FORMATS</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;tsv&#39;</span><span class="p">,</span> <span class="s1">&#39;unix&#39;</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;Available formats for display on console.&quot;&quot;&quot;</span>
+
+
+<span class="n">CheckedArgs</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;CheckedArgs&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;wowpath&#39;</span><span class="p">,</span> <span class="s1">&#39;format&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">])</span>
+<span class="sd">&quot;&quot;&quot;Critical application arguments.&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="options"><a class="viewcode-back" href="../../familyledger.html#familyledger.commandline.options">[docs]</a><span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="n">gui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Defines arguments for a command line parser.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        gui (bool): flag indicating re-use of command line arguments in </span>
+<span class="sd">            graphical user interface programs.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        :obj:`argparse.ArgumentParser`: commandline argument parser.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;List possessions stored on accounts in &#39;</span>
+        <span class="s1">&#39;a World of Warcaft vanilla 1.12 folder. &#39;</span>
+        <span class="s1">&#39;This program currently requires the Possessions addon &#39;</span>
+        <span class="s1">&#39;to be installed in World of Warcraft.&#39;</span><span class="p">,</span>
+        <span class="n">epilog</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;-V&#39;</span><span class="p">,</span> <span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span>
+        <span class="n">version</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(prog)s</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-v&#39;</span><span class="p">,</span> <span class="s1">&#39;--verbose&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="s1">&#39;--debug&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-q&#39;</span><span class="p">,</span> <span class="s1">&#39;--quiet&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;--log-level&#39;</span><span class="p">,</span> 
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;debug&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;warning&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="s1">&#39;critical&#39;</span><span class="p">],</span> 
+        <span class="n">default</span><span class="o">=</span><span class="s1">&#39;warning&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;level of logging (default: warning)&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;--log-disable&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;disable logging to file&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;--lang&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;language (default: en)&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;--db&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;twinhead&#39;</span><span class="p">,</span> <span class="s1">&#39;wowhead&#39;</span><span class="p">,</span> <span class="s1">&#39;classicdb&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">],</span>
+        <span class="n">default</span><span class="o">=</span><span class="s1">&#39;twinhead&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;item link database (default: twinhead)&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;--include-mail&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">check_bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;false&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;include items in mail for views with location ambiguity&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;--gold-format&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;output format for gold &#39;</span>
+        <span class="s1">&#39;(default:&quot;</span><span class="si">{gold}</span><span class="s1">g </span><span class="si">{silver:02d}</span><span class="s1">s </span><span class="si">{copper:02d}</span><span class="s1">c&quot;)&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;--view&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">dataview</span><span class="o">.</span><span class="n">DATAVIEWS</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">check_view</span><span class="p">,</span> 
+        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;view of the data (default: &quot;character&quot; for non-excel)&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">gui</span><span class="p">:</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;--format&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">EXPORT_FORMATS</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;output file format (default: excel)&#39;</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span> 
+            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;output file (default: output.tsv, &quot;-&quot; is console)&#39;</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--search&#39;</span><span class="p">,</span> 
+            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;search for string, results always in console&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;wowpath&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;folder&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;World of Warcraft folder path&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">parser</span></div>
+
+
+<div class="viewcode-block" id="check_bool"><a class="viewcode-back" href="../../familyledger.html#familyledger.commandline.check_bool">[docs]</a><span class="k">def</span> <span class="nf">check_bool</span><span class="p">(</span><span class="n">bool_str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks for the presence of a valid boolean from a string.</span>
+<span class="sd">    </span>
+<span class="sd">    Note:</span>
+<span class="sd">        Utility intended for use in type validation within arguments of</span>
+<span class="sd">        :obj:`argparse.ArgumentParser`.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        bool_str (str): string representing a boolean (case-insensitive).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: boolean value.</span>
+<span class="sd">        </span>
+<span class="sd">    Raises:</span>
+<span class="sd">        :obj:`argparse.ArgumentTypeError`: if input does not represent boolean.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">boolean</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;true&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;false&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">boolean</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">bool_str</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%r</span><span class="s1"> is not boolean&#39;</span> <span class="o">%</span> <span class="n">bool_str</span>
+        <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="check_view"><a class="viewcode-back" href="../../familyledger.html#familyledger.commandline.check_view">[docs]</a><span class="k">def</span> <span class="nf">check_view</span><span class="p">(</span><span class="n">choice</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks for a valid dataview selection that begins with a substring.</span>
+<span class="sd">    </span>
+<span class="sd">    This function will return the input unchanged for an invalid choice to </span>
+<span class="sd">    allow further validation.</span>
+<span class="sd">    </span>
+<span class="sd">    Note:</span>
+<span class="sd">        Utility intended for use in type validation of string choices within </span>
+<span class="sd">        arguments of :obj:`argparse.ArgumentParser`.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        choice (str): input text.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: dataview name or input text.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">selection</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">dataview</span><span class="o">.</span><span class="n">DATAVIEWS</span> <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">choice</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">selection</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">choice</span></div>
+
+
+<div class="viewcode-block" id="check_args"><a class="viewcode-back" href="../../familyledger.html#familyledger.commandline.check_args">[docs]</a><span class="k">def</span> <span class="nf">check_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks command line arguments and returns a tuple of validated arguments.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :obj:`CheckedArgs`: namedtuple of validated program arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gui</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;gui&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">output_format</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">saved_wowpath</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;wowpath&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">gui</span><span class="p">:</span>
+        <span class="n">output_format</span> <span class="o">=</span> <span class="n">check_output_format</span><span class="p">(</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">output</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">search</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">check_output</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">output</span><span class="p">,</span> <span class="n">output_format</span><span class="p">)</span>
+    <span class="n">checked_args</span> <span class="o">=</span> <span class="n">CheckedArgs</span><span class="p">(</span>
+        <span class="n">check_wowpath</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">wowpath</span><span class="p">,</span> <span class="n">saved_wowpath</span><span class="p">),</span> <span class="n">output_format</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">checked_args</span></div>
+
+
+<div class="viewcode-block" id="check_output_format"><a class="viewcode-back" href="../../familyledger.html#familyledger.commandline.check_output_format">[docs]</a><span class="k">def</span> <span class="nf">check_output_format</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">requested_format</span><span class="p">,</span> <span class="n">search_mode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks and returns the output format selected by the user.</span>
+<span class="sd">    </span>
+<span class="sd">    If the output is to the console, either due to the output file being &#39;-&#39;</span>
+<span class="sd">    or search mode is selected, then only a subset of formats are available</span>
+<span class="sd">    (text only).</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        output_file (str): output filename.</span>
+<span class="sd">        requested_format (str): user format selection.</span>
+<span class="sd">        search_mode (bool): flag for whether in search mode.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: output format.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_format</span> <span class="o">=</span> <span class="s1">&#39;tsv&#39;</span>
+    <span class="c1"># Check not in console mode =&gt; export mode</span>
+    <span class="k">if</span> <span class="n">output_file</span> <span class="o">!=</span> <span class="s1">&#39;-&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">search_mode</span><span class="p">:</span>
+        <span class="n">default_format</span> <span class="o">=</span> <span class="s1">&#39;excel&#39;</span>
+        <span class="k">if</span> <span class="n">requested_format</span> <span class="ow">in</span> <span class="n">EXPORT_FORMATS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">requested_format</span>
+    <span class="c1"># Check for valid console format</span>
+    <span class="k">elif</span> <span class="n">requested_format</span> <span class="ow">in</span> <span class="n">CONSOLE_FORMATS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">requested_format</span>
+    <span class="k">return</span> <span class="n">default_format</span></div>
+
+
+<div class="viewcode-block" id="check_output"><a class="viewcode-back" href="../../familyledger.html#familyledger.commandline.check_output">[docs]</a><span class="k">def</span> <span class="nf">check_output</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">output_format</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks and returns the output filename.</span>
+<span class="sd">    </span>
+<span class="sd">    If no output filename is selected, a default is provided with a file</span>
+<span class="sd">    extension corresponding to the selected format.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        output_file (str): output filename.</span>
+<span class="sd">        output_format (str): output format.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: output filename.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">output_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">output_file</span> <span class="o">=</span> <span class="s1">&#39;output&#39;</span> <span class="o">+</span> <span class="n">FORMAT_EXTENSION</span><span class="p">[</span><span class="n">output_format</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">output_file</span></div>
+
+
+<div class="viewcode-block" id="check_wowpath"><a class="viewcode-back" href="../../familyledger.html#familyledger.commandline.check_wowpath">[docs]</a><span class="k">def</span> <span class="nf">check_wowpath</span><span class="p">(</span><span class="n">wowpath</span><span class="p">,</span> <span class="n">saved_wowpath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks and returns the path to the World of Warcraft directory.</span>
+<span class="sd">    </span>
+<span class="sd">    If no path is provided or the path does not exist, a graphical request</span>
+<span class="sd">    is made with the initial directory defaulting to any previously saved</span>
+<span class="sd">    path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">wowpath</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">wowpath</span><span class="p">):</span>
+        <span class="c1"># Graphical request for correct folder</span>
+        <span class="n">Tk</span><span class="p">()</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
+        <span class="n">wowpath</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">n_</span><span class="p">(</span><span class="s1">&#39;World of Warcraft folder&#39;</span><span class="p">),</span> <span class="n">initialdir</span><span class="o">=</span><span class="n">saved_wowpath</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">wowpath</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">n_</span><span class="p">(</span><span class="s1">&#39;Error: no World of Warcraft folder given&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">wowpath</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

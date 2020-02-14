@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ledger &#8212; Family Ledger Documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cli.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Family Ledger</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../contents.html">Contents</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web.html">Tutorial 1: Viewing items in your web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_file.html">Tutorial 2: Viewing items from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_console.html">Tutorial 3: Viewing items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search_console.html">Tutorial 4: Searching items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../views.html">Views Explained</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../commandline_examples.html">More Command Line Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_ledger.html">Ledger - Program Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_ledger_web.html">Ledger Web - Program Arguments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Known Issues and Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html#reporting-bugs">Reporting Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../author.html">Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../third_party.html">Credits</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for ledger</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The driving module for the command line version of Family Ledger.</span>
+
+<span class="sd">Copyright (C) 2020, fondlez &quot;Anuber&quot;-Kronos, fondlez at protonmail.com</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">gettext</span>
+<span class="kn">import</span> <span class="nn">locale</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="kn">import</span> <span class="nn">xlsxwriter</span>
+
+<span class="kn">from</span> <span class="nn">familyledger</span> <span class="kn">import</span> <span class="n">account</span>
+<span class="kn">from</span> <span class="nn">familyledger.config</span> <span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span> <span class="nn">familyledger</span> <span class="kn">import</span> <span class="n">commandline</span>
+<span class="kn">from</span> <span class="nn">familyledger</span> <span class="kn">import</span> <span class="n">dataview</span>
+<span class="kn">from</span> <span class="nn">familyledger</span> <span class="kn">import</span> <span class="n">possessions</span>
+<span class="kn">from</span> <span class="nn">familyledger</span> <span class="kn">import</span> <span class="n">version</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_console</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils._exception</span> <span class="kn">import</span> <span class="n">set_exception_handler</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_file</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils._i18n</span> <span class="kn">import</span> <span class="n">n_</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_iterable</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_path</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_logging</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils._logging</span> <span class="kn">import</span> <span class="n">get_log</span>
+<span class="kn">from</span> <span class="nn">familyledger.utils</span> <span class="kn">import</span> <span class="n">_warcraft</span>
+
+
+<span class="n">FORMAT_TO_DIALECT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;csv&#39;</span><span class="p">:</span> <span class="s1">&#39;excel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tsv&#39;</span><span class="p">:</span> <span class="s1">&#39;excel-tab&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unix&#39;</span><span class="p">:</span> <span class="s1">&#39;unix&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="sd">&quot;&quot;&quot;Mapping from output file format to ``csv.writer`` dialect.&quot;&quot;&quot;</span>
+
+<span class="n">EXCEL_TABS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s1">&#39;factiongold&#39;</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;item&#39;</span><span class="p">,</span> <span class="s1">&#39;character&#39;</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;mail&#39;</span><span class="p">,</span> <span class="s1">&#39;worn&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;raw&#39;</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;List of Excel sheet names corresponding to a dataview.&quot;&quot;&quot;</span>
+
+<span class="n">ExcelSheet</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;ExcelSheet&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;title_cols&#39;</span><span class="p">])</span>
+<span class="sd">&quot;&quot;&quot;Data type for Excel sheet settings.&quot;&quot;&quot;</span>
+
+<span class="n">EXCEL_SHEETS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;factiongold&#39;</span><span class="p">:</span> <span class="n">ExcelSheet</span><span class="p">(</span><span class="s1">&#39;Gold Per Faction&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> 
+    <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="n">ExcelSheet</span><span class="p">(</span><span class="s1">&#39;Gold Per Character&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> 
+    <span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">ExcelSheet</span><span class="p">(</span><span class="s1">&#39;Items Per Server&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> 
+    <span class="s1">&#39;character&#39;</span><span class="p">:</span> <span class="n">ExcelSheet</span><span class="p">(</span><span class="s1">&#39;Items Per Character&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> 
+    <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="n">ExcelSheet</span><span class="p">(</span><span class="s1">&#39;Items Per Character - Location&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> 
+    <span class="s1">&#39;mail&#39;</span><span class="p">:</span> <span class="n">ExcelSheet</span><span class="p">(</span><span class="s1">&#39;Items Per Character - Mail&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> 
+    <span class="s1">&#39;worn&#39;</span><span class="p">:</span> <span class="n">ExcelSheet</span><span class="p">(</span><span class="s1">&#39;Items Per Character - Worn&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> 
+    <span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="n">ExcelSheet</span><span class="p">(</span><span class="s1">&#39;Original Item Data&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> 
+    <span class="s1">&#39;about&#39;</span><span class="p">:</span> <span class="n">ExcelSheet</span><span class="p">(</span><span class="s1">&#39;About This Data&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> 
+<span class="p">}</span>
+<span class="sd">&quot;&quot;&quot;Mapping from Excel sheet names to Excel sheet settings.&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="setup"><a class="viewcode-back" href="../_code/ledger.html#ledger.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Sets up the debugging context for the main application.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Disables traceback output by default to be end user friendly</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">set_exception_handler</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">commandline</span><span class="o">.</span><span class="n">options</span><span class="p">()</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="c1"># - unless the user states they want to see it</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">set_exception_handler</span><span class="p">,</span> <span class="n">debug_flag</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">debug</span><span class="p">)</span>
+    <span class="n">internationalize</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">log_level</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+            <span class="n">log_level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span>
+        <span class="n">log_level</span> <span class="o">=</span> <span class="n">log_level</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">logging</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">log_level</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">log_disable</span><span class="p">:</span>
+            <span class="n">_logging</span><span class="o">.</span><span class="n">configure_root_logger</span><span class="p">(</span>
+                <span class="n">log_file</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.log&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_path</span><span class="o">.</span><span class="n">extless</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span>
+                <span class="n">log_level</span><span class="o">=</span><span class="n">log_level</span><span class="p">)</span>
+        <span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">pdb</span>
+            <span class="kn">import</span> <span class="nn">traceback</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+            <span class="n">pdb</span><span class="o">.</span><span class="n">post_mortem</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">get_log</span><span class="p">(</span><span class="s1">&#39;ledger&#39;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Uncaught exception </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
+            <span class="k">raise</span></div>
+
+
+<div class="viewcode-block" id="internationalize"><a class="viewcode-back" href="../_code/ledger.html#ledger.internationalize">[docs]</a><span class="k">def</span> <span class="nf">internationalize</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="c1"># Internationalizes this module via the gettext standard library module.</span>
+    <span class="c1"># Unconventional global variable placement is to enable a non-fallback</span>
+    <span class="c1"># default language supplied from the system locale or the user.</span>
+    <span class="c1"># PYINSTALLER: data files must be bundle-aware</span>
+    <span class="n">mo_path</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="s1">&#39;_MEIPASS&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+    <span class="n">mo_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mo_path</span><span class="p">,</span> <span class="s1">&#39;share/locale&#39;</span><span class="p">)</span>
+    <span class="n">translate</span> <span class="o">=</span> <span class="n">gettext</span><span class="o">.</span><span class="n">translation</span><span class="p">(</span>
+        <span class="s1">&#39;ledger&#39;</span><span class="p">,</span> <span class="n">localedir</span><span class="o">=</span><span class="n">mo_path</span><span class="p">,</span> <span class="n">languages</span><span class="o">=</span><span class="n">user_lang</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">lang</span><span class="p">),</span> 
+        <span class="n">fallback</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">global</span> <span class="n">_</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">translate</span><span class="o">.</span><span class="n">gettext</span></div>
+
+            
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../_code/ledger.html#ledger.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Starts the main application.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">checked_args</span> <span class="o">=</span> <span class="n">validate_inputs</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">search</span><span class="p">:</span>
+        <span class="n">report_query</span><span class="p">(</span><span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">export_possessions_to_file</span><span class="p">(</span><span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="validate_inputs"><a class="viewcode-back" href="../_code/ledger.html#ledger.validate_inputs">[docs]</a><span class="k">def</span> <span class="nf">validate_inputs</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Validates the (critical) application arguments.</span>
+<span class="sd">    </span>
+<span class="sd">    WoW path information is obtained from and saved to configuration file.</span>
+<span class="sd">    The presence of correctly named addon data files at the WoW path is checked.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :obj:`commandline.CheckedArgs`: namedtuple of validated program </span>
+<span class="sd">            arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
+    <span class="n">checked_args</span> <span class="o">=</span> <span class="n">commandline</span><span class="o">.</span><span class="n">check_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">possessions</span><span class="o">.</span><span class="n">check_possessions</span><span class="p">(</span><span class="n">checked_args</span><span class="o">.</span><span class="n">wowpath</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">_</span><span class="p">(</span>
+            <span class="s2">&quot;Check you have given the correct WoW folder &quot;</span>
+            <span class="s2">&quot;path and it contains &#39;Possessions.lua&#39; files under the &#39;WTF&#39; &quot;</span>
+            <span class="s2">&quot;tree. If you already have the Possessions addon installed, you &quot;</span>
+            <span class="s2">&quot;may need to log into WoW and open your mail and bank to get all &quot;</span>
+            <span class="s2">&quot;data for each character.&quot;</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Error: no data found.&#39;</span><span class="p">))</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wowpath&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">checked_args</span><span class="o">.</span><span class="n">wowpath</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span> <span class="o">=</span> <span class="n">get_log</span><span class="p">(</span><span class="s1">&#39;ledger&#39;</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Unable to save configuration: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">checked_args</span></div>
+
+
+<div class="viewcode-block" id="report_query"><a class="viewcode-back" href="../_code/ledger.html#ledger.report_query">[docs]</a><span class="k">def</span> <span class="nf">report_query</span><span class="p">(</span><span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reports the results from search mode to console.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        checked_args (:obj:`commandline.CheckedArgs`): namedtuple of validated </span>
+<span class="sd">            program arguments.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">gen_possessions_data</span><span class="p">(</span><span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="n">dataview</span><span class="o">.</span><span class="n">create_view</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">dataview</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">search</span><span class="p">)</span>
+        <span class="n">csv_output</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">header</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="export_possessions_to_file"><a class="viewcode-back" href="../_code/ledger.html#ledger.export_possessions_to_file">[docs]</a><span class="k">def</span> <span class="nf">export_possessions_to_file</span><span class="p">(</span><span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exports item data to an output file.</span>
+<span class="sd">    </span>
+<span class="sd">    Note:</span>
+<span class="sd">        Any existing output file with the same name is overwritten in effect.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        checked_args (:obj:`commandline.CheckedArgs`): namedtuple of validated </span>
+<span class="sd">            program arguments.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">checked_args</span><span class="o">.</span><span class="n">output</span>
+    <span class="k">if</span> <span class="n">output</span> <span class="o">!=</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+        <span class="n">_file</span><span class="o">.</span><span class="n">remove_file_silent</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">checked_args</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s1">&#39;excel&#39;</span><span class="p">:</span>
+        <span class="n">excel_output</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">_file</span><span class="o">.</span><span class="n">unixoutput</span><span class="p">(</span>
+                <span class="n">output</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;at&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf_8&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">gen_possessions_data</span><span class="p">(</span><span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+            <span class="n">view</span> <span class="o">=</span> <span class="n">dataview</span><span class="o">.</span><span class="n">create_view</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+            <span class="n">csv_output</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">header</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="gen_possessions_data"><a class="viewcode-back" href="../_code/ledger.html#ledger.gen_possessions_data">[docs]</a><span class="k">def</span> <span class="nf">gen_possessions_data</span><span class="p">(</span><span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields item data from specific addon data files in a WoW path.</span>
+<span class="sd">    </span>
+<span class="sd">    For the Possessions addon data, the account name is obtained from the </span>
+<span class="sd">    path itself of the data file, then added back into the item data structure.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        checked_args (:obj:`commandline.CheckedArgs`): namedtuple of validated </span>
+<span class="sd">            program arguments.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">        </span>
+<span class="sd">    Yields:</span>
+<span class="sd">        :obj:`account.AccountItemRecord`: raw item data plus account name as </span>
+<span class="sd">            namedtuple.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log</span> <span class="o">=</span> <span class="n">get_log</span><span class="p">(</span><span class="s1">&#39;ledger&#39;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Reading data files:&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">possessions</span><span class="o">.</span><span class="n">find_possessions</span><span class="p">(</span><span class="n">checked_args</span><span class="o">.</span><span class="n">wowpath</span><span class="p">):</span>
+        <span class="n">account_name</span> <span class="o">=</span> <span class="n">_path</span><span class="o">.</span><span class="n">splitall</span><span class="p">(</span><span class="n">filepath</span><span class="p">)[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">possessions</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+        <span class="n">vprint</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">filepath</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;* </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">filepath</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">account</span><span class="o">.</span><span class="n">AccountItemRecord</span><span class="p">(</span><span class="o">*</span><span class="n">chain</span><span class="p">([</span><span class="n">account_name</span><span class="p">],</span> <span class="n">row</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="excel_output"><a class="viewcode-back" href="../_code/ledger.html#ledger.excel_output">[docs]</a><span class="k">def</span> <span class="nf">excel_output</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Outputs item data to Excel.</span>
+<span class="sd">    </span>
+<span class="sd">    Since the Excel output format supports multiple data sheets, the output</span>
+<span class="sd">    contains all the supported data views for convenient access to all data.</span>
+<span class="sd">    </span>
+<span class="sd">    In addition, basic attempts have been made to format the data for end-user </span>
+<span class="sd">    friendly access while not inconveniencing further data processing within</span>
+<span class="sd">    Excel.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        output (str): output file name.</span>
+<span class="sd">        checked_args (:obj:`commandline.CheckedArgs`): namedtuple of validated </span>
+<span class="sd">            program arguments.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Cache data to create multiple views</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">gen_possessions_data</span><span class="p">(</span><span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">))</span>
+    <span class="n">workbook</span> <span class="o">=</span> <span class="n">xlsxwriter</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="c1"># Formats used throughout Excel workbook need to be pre-created</span>
+    <span class="c1"># - attempts to replicate the built-in &#39;Heading 1&#39; style as a format object</span>
+    <span class="n">title_format</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_format</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;bold&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;font_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Calibri&#39;</span><span class="p">,</span> <span class="s1">&#39;font_color&#39;</span><span class="p">:</span> <span class="s1">&#39;#003366&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;font_size&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;bottom_color&#39;</span><span class="p">:</span> <span class="s1">&#39;333399&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+    <span class="n">header_format_left</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_format</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;bold&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;font_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Calibri&#39;</span><span class="p">,</span> <span class="s1">&#39;font_color&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;bg_color&#39;</span><span class="p">:</span> <span class="s1">&#39;#0066CC&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;align&#39;</span><span class="p">:</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+    <span class="n">header_format_right</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_format</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;bold&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;font_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Calibri&#39;</span><span class="p">,</span> <span class="s1">&#39;font_color&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;bg_color&#39;</span><span class="p">:</span> <span class="s1">&#39;#0066CC&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;align&#39;</span><span class="p">:</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+    <span class="n">body_format</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_format</span><span class="p">({</span><span class="s1">&#39;font_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Calibri&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">})</span>
+    <span class="n">body_format_gold</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_format</span><span class="p">(</span>
+        <span class="p">{</span><span class="s1">&#39;font_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Calibri&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;num_format&#39;</span><span class="p">:</span> <span class="s1">&#39;#,##0.0000&#39;</span><span class="p">})</span>
+    <span class="c1"># Worksheet tab colors</span>
+    <span class="n">tab_colors</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;factiongold&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF0000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFCC00&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="s1">&#39;#00FF00&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;character&#39;</span><span class="p">:</span> <span class="s1">&#39;#99CCFF&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="s1">&#39;#3366FF&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;mail&#39;</span><span class="p">:</span> <span class="s1">&#39;#C0C0C0&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;worn&#39;</span><span class="p">:</span> <span class="s1">&#39;#800080&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="s1">&#39;#000000&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="c1"># Create a sheet per dataview</span>
+    <span class="k">for</span> <span class="n">view_name</span> <span class="ow">in</span> <span class="n">_console</span><span class="o">.</span><span class="n">progress_bar</span><span class="p">(</span><span class="n">EXCEL_TABS</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">quiet</span><span class="p">):</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="n">dataview</span><span class="o">.</span><span class="n">create_view</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">view_name</span><span class="p">)</span>
+        <span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="n">view_name</span><span class="p">))</span>  <span class="c1"># Translate sheet name</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">set_tab_color</span><span class="p">(</span><span class="n">tab_colors</span><span class="p">[</span><span class="n">view_name</span><span class="p">])</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">hide_gridlines</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Create a title with formatting based on sheet settings</span>
+        <span class="n">sheet_settings</span> <span class="o">=</span> <span class="n">EXCEL_SHEETS</span><span class="p">[</span><span class="n">view_name</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">sheet_settings</span><span class="o">.</span><span class="n">title</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">title_format</span><span class="p">)</span>
+        <span class="c1"># - formatting blank cells requires writing blank cells with a format</span>
+        <span class="k">for</span> <span class="n">title_col_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sheet_settings</span><span class="o">.</span><span class="n">title_cols</span><span class="p">):</span>
+            <span class="n">worksheet</span><span class="o">.</span><span class="n">write_blank</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">title_col_index</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">title_format</span><span class="p">)</span>
+        <span class="c1"># Position around row and column offsets to give flexibility of </span>
+        <span class="c1"># placement of the content</span>
+        <span class="n">row_offset</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">col_offset</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># &quot;Freeze panes&quot; enables scrolling while headers remain visible</span>
+        <span class="c1"># Positioned on first item of leftmost data</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">freeze_panes</span><span class="p">(</span><span class="n">row_offset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">col_offset</span><span class="p">)</span>
+        <span class="c1"># Track headers in format sets to align headers and format appropriately</span>
+        <span class="n">numerical_indices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">gold_indices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="c1"># Track the maximum width of data in a column to resize the column width</span>
+        <span class="n">max_column_widths</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">header_index</span><span class="p">,</span> <span class="n">header_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">header</span><span class="p">):</span>
+            <span class="n">header_col_index</span> <span class="o">=</span> <span class="n">header_index</span> <span class="o">+</span> <span class="n">col_offset</span>
+            <span class="n">header_format</span> <span class="o">=</span> <span class="n">header_format_left</span>
+            <span class="k">if</span> <span class="n">header_name</span> <span class="ow">in</span> <span class="n">dataview</span><span class="o">.</span><span class="n">PRESENTATION_FORMATS</span><span class="p">[</span><span class="s1">&#39;numerical&#39;</span><span class="p">]:</span>
+                <span class="n">numerical_indices</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">header_index</span><span class="p">)</span>
+                <span class="n">header_format</span> <span class="o">=</span> <span class="n">header_format_right</span>
+            <span class="k">if</span> <span class="n">header_name</span> <span class="ow">in</span> <span class="n">dataview</span><span class="o">.</span><span class="n">PRESENTATION_FORMATS</span><span class="p">[</span><span class="s1">&#39;gold&#39;</span><span class="p">]:</span>
+                <span class="n">gold_indices</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">header_index</span><span class="p">)</span>
+                <span class="n">header_format</span> <span class="o">=</span> <span class="n">header_format_right</span>
+            <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="n">row_offset</span><span class="p">,</span> <span class="n">header_col_index</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="n">header_name</span><span class="p">),</span> <span class="n">header_format</span><span class="p">)</span>
+            <span class="n">max_column_widths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">header_name</span><span class="p">))</span>
+        <span class="c1"># Headers complete, now output body of data on following rows</span>
+        <span class="n">row_offset</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">row_index</span><span class="p">,</span> <span class="n">row_data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
+            <span class="n">body_row_index</span> <span class="o">=</span> <span class="n">row_index</span> <span class="o">+</span> <span class="n">row_offset</span>
+            <span class="k">for</span> <span class="n">col_index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row_data</span><span class="p">):</span>
+                <span class="n">body_col_index</span> <span class="o">=</span> <span class="n">col_index</span> <span class="o">+</span> <span class="n">col_offset</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">item</span>
+                <span class="c1"># Non-gold data</span>
+                <span class="k">if</span> <span class="n">col_index</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">gold_indices</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">col_index</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">numerical_indices</span><span class="p">:</span>
+                        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                            <span class="n">body_row_index</span><span class="p">,</span> <span class="n">body_col_index</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">body_format</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                        <span class="n">worksheet</span><span class="o">.</span><span class="n">write_number</span><span class="p">(</span>
+                            <span class="n">body_row_index</span><span class="p">,</span> <span class="n">body_col_index</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">body_format</span><span class="p">)</span>                    
+                <span class="c1"># Gold data</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">gold_format</span><span class="p">:</span>
+                        <span class="c1"># Default gold format is as a decimal</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">_warcraft</span><span class="o">.</span><span class="n">decimal_gold</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                        <span class="n">worksheet</span><span class="o">.</span><span class="n">write_number</span><span class="p">(</span>
+                            <span class="n">body_row_index</span><span class="p">,</span> <span class="n">body_col_index</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> 
+                            <span class="n">body_format_gold</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># ... unless a user requests a specific gold format</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">_warcraft</span><span class="o">.</span><span class="n">format_gold</span><span class="p">(</span>
+                            <span class="n">value</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">gold_format</span><span class="p">)</span>
+                        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                            <span class="n">body_row_index</span><span class="p">,</span> <span class="n">body_col_index</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">body_format</span><span class="p">)</span>
+                <span class="c1"># Track maximum content length within columns</span>
+                <span class="n">max_column_widths</span><span class="p">[</span><span class="n">col_index</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+                    <span class="n">max_column_widths</span><span class="p">[</span><span class="n">col_index</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+        <span class="c1"># Adjust column widths based on maximum content length.</span>
+        <span class="c1"># The adjustment is an estimate due to Microsoft Excel rendering.</span>
+        <span class="c1"># Source: https://xlsxwriter.readthedocs.io/worksheet.html</span>
+        <span class="k">for</span> <span class="n">col_index</span><span class="p">,</span> <span class="n">width</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">max_column_widths</span><span class="p">):</span>
+            <span class="n">body_col_index</span> <span class="o">=</span> <span class="n">col_index</span> <span class="o">+</span> <span class="n">col_offset</span>
+            <span class="n">new_width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">8.43</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.1</span>  <span class="c1"># Magic numbers for Calibri font</span>
+            <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="n">body_col_index</span><span class="p">,</span> <span class="n">body_col_index</span><span class="p">,</span> <span class="n">new_width</span><span class="p">)</span>
+    <span class="c1"># &#39;About&#39; sheet</span>
+    <span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;about&#39;</span><span class="p">))</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">hide_gridlines</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1">#   0. Don’t hide gridlines.</span>
+    <span class="c1">#   1. Hide printed gridlines only.</span>
+    <span class="c1">#   2. Hide screen and printed gridlines.</span>
+    <span class="c1"># Date-time in ISO8601 format excluding microsecond component</span>
+    <span class="n">current_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+    <span class="n">about_data</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Application&#39;</span><span class="p">),</span> <span class="s1">&#39;Family Ledger&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Version&#39;</span><span class="p">),</span> <span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Author&#39;</span><span class="p">),</span> <span class="s1">&#39;fondlez &quot;Anuber&quot;-Kronos, fondlez at protonmail.com&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Source&#39;</span><span class="p">),</span> <span class="s1">&#39;http://github.com/anuber-Kronos/familyledger&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Credits&#39;</span><span class="p">),</span> 
+            <span class="s1">&#39;Possessions addon (https://github.com/Road-block/Possessions)&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;slpp module (https://github.com/SirAnthony/slpp)&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;remi (https://github.com/dddomodossola/remi)&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;xlsxwriter (https://github.com/jmcnamara/XlsxWriter)&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Kronos Private Vanilla World of Warcraft Project &#39;</span>
+            <span class="s1">&#39;(https://www.kronos-wow.com/)&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Generated&#39;</span><span class="p">),</span> <span class="n">current_datetime</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="c1"># Adds a title to this sheet</span>
+    <span class="n">sheet_settings</span> <span class="o">=</span> <span class="n">EXCEL_SHEETS</span><span class="p">[</span><span class="s1">&#39;about&#39;</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">sheet_settings</span><span class="o">.</span><span class="n">title</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">title_format</span><span class="p">)</span>
+    <span class="c1"># - formatting blank cells requires writing blank cells with a format</span>
+    <span class="k">for</span> <span class="n">title_col_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sheet_settings</span><span class="o">.</span><span class="n">title_cols</span><span class="p">):</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write_blank</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">title_col_index</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">title_format</span><span class="p">)</span>
+    <span class="c1"># Offsets for content placement flexibility</span>
+    <span class="n">row_offset</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">col_offset</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Only two columns as key-value pairs required here</span>
+    <span class="n">label_col_index</span> <span class="o">=</span> <span class="n">col_offset</span>
+    <span class="n">value_col_index</span> <span class="o">=</span> <span class="n">label_col_index</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">row_index</span><span class="p">,</span> <span class="n">row_data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">about_data</span><span class="p">):</span>
+        <span class="n">body_row_index</span> <span class="o">=</span> <span class="n">row_index</span> <span class="o">+</span> <span class="n">row_offset</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">row_data</span><span class="p">[</span><span class="n">label_col_index</span><span class="p">]</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">row_data</span><span class="p">[</span><span class="n">value_col_index</span><span class="p">]</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+            <span class="n">body_row_index</span><span class="p">,</span> <span class="n">label_col_index</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">header_format_left</span><span class="p">)</span>
+        <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+            <span class="n">body_row_index</span><span class="p">,</span> <span class="n">value_col_index</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">body_format</span><span class="p">)</span>
+    <span class="c1"># Adjust column widths to maximum length of content in columns.  </span>
+    <span class="c1"># Since the data is static, the values are pulled manually from Excel.</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="n">label_col_index</span><span class="p">,</span> <span class="n">label_col_index</span><span class="p">,</span> <span class="mf">10.43</span><span class="p">)</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="n">value_col_index</span><span class="p">,</span> <span class="n">value_col_index</span><span class="p">,</span> <span class="mf">25.14</span><span class="p">)</span>
+    <span class="n">workbook</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="csv_output"><a class="viewcode-back" href="../_code/ledger.html#ledger.csv_output">[docs]</a><span class="k">def</span> <span class="nf">csv_output</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">header</span><span class="p">,</span> <span class="n">row_data</span><span class="p">,</span> <span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Outputs item data in a CSV format to file or console.</span>
+<span class="sd">    </span>
+<span class="sd">    Reformatting is carried out for columns containing gold values before </span>
+<span class="sd">    output, if the data is not from a &#39;raw&#39; view.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        output_file (io.IOBase): output file.</span>
+<span class="sd">        header (tuple): header fields.</span>
+<span class="sd">        row_data: iterable containing tuples.</span>
+<span class="sd">        checked_args (:obj:`commandline.CheckedArgs`): namedtuple of validated </span>
+<span class="sd">            program arguments.</span>
+<span class="sd">        args (:obj:`argparse.Namespace`): program arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">csv_dialect</span> <span class="o">=</span> <span class="n">FORMAT_TO_DIALECT</span><span class="p">[</span><span class="n">checked_args</span><span class="o">.</span><span class="n">format</span><span class="p">]</span>
+    <span class="n">f_csv</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="n">csv_dialect</span><span class="p">)</span>
+    <span class="n">f_csv</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">header</span><span class="p">)))</span>  <span class="c1"># Translate header through gettext</span>
+    <span class="n">gold_indices</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> 
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">dataview</span><span class="o">.</span><span class="n">PRESENTATION_FORMATS</span><span class="p">[</span><span class="s1">&#39;gold&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">gold_indices</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">view</span> <span class="o">==</span> <span class="s1">&#39;raw&#39;</span><span class="p">:</span>
+        <span class="n">f_csv</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">row_data</span><span class="p">:</span>
+            <span class="n">format_row</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">gold_index</span> <span class="ow">in</span> <span class="n">gold_indices</span><span class="p">:</span>
+                <span class="n">gold_value</span> <span class="o">=</span> <span class="n">format_row</span><span class="p">[</span><span class="n">gold_index</span><span class="p">]</span>
+                <span class="n">console_mode</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">output</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">search</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">gold_format</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">console_mode</span><span class="p">:</span>
+                    <span class="c1"># Structured output like data files by default prefers</span>
+                    <span class="c1"># data like gold as a number/decimal to further process.</span>
+                    <span class="n">format_row</span><span class="p">[</span><span class="n">gold_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">_warcraft</span><span class="o">.</span><span class="n">decimal_gold</span><span class="p">(</span>
+                        <span class="n">gold_value</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Unstructured output, like the console by default prefers</span>
+                    <span class="c1"># user-friendly final output like gold as shown in-game.</span>
+                    <span class="n">format_row</span><span class="p">[</span><span class="n">gold_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">_warcraft</span><span class="o">.</span><span class="n">format_gold</span><span class="p">(</span>
+                        <span class="n">gold_value</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">gold_format</span><span class="p">)</span>
+            <span class="n">f_csv</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">format_row</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="user_lang"><a class="viewcode-back" href="../_code/ledger.html#ledger.user_lang">[docs]</a><span class="k">def</span> <span class="nf">user_lang</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sets and returns a language code. Default: &#39;en&#39;.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_iterable</span><span class="o">.</span><span class="n">first_true</span><span class="p">((</span><span class="n">lang</span><span class="p">,</span> <span class="n">locale</span><span class="o">.</span><span class="n">getdefaultlocale</span><span class="p">()),</span> <span class="s1">&#39;en&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="vprint"><a class="viewcode-back" href="../_code/ledger.html#ledger.vprint">[docs]</a><span class="k">def</span> <span class="nf">vprint</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Helper function for verbose printing to console.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">setup</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

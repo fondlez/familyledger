@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ledger module &#8212; Family Ledger Documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cli.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Family Ledger</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../contents.html">Contents</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web.html">Tutorial 1: Viewing items in your web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_file.html">Tutorial 2: Viewing items from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_console.html">Tutorial 3: Viewing items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search_console.html">Tutorial 4: Searching items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../views.html">Views Explained</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../commandline_examples.html">More Command Line Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_ledger.html">Ledger - Program Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference_ledger_web.html">Ledger Web - Program Arguments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Known Issues and Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html#reporting-bugs">Reporting Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../author.html">Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../third_party.html">Credits</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">ledger module</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/_code/ledger.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="module-ledger">
+<span id="ledger-module"></span><h1>ledger module</h1>
+<p>The driving module for the command line version of Family Ledger.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="data">
+<dt id="ledger.EXCEL_SHEETS">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">EXCEL_SHEETS</code><em class="property"> = {'about': ExcelSheet(title='About This Data', title_cols=2), 'character': ExcelSheet(title='Items Per Character', title_cols=3), 'factiongold': ExcelSheet(title='Gold Per Faction', title_cols=3), 'gold': ExcelSheet(title='Gold Per Character', title_cols=3), 'item': ExcelSheet(title='Items Per Server', title_cols=2), 'location': ExcelSheet(title='Items Per Character - Location', title_cols=4), 'mail': ExcelSheet(title='Items Per Character - Mail', title_cols=4), 'raw': ExcelSheet(title='Original Item Data', title_cols=3), 'worn': ExcelSheet(title='Items Per Character - Worn', title_cols=4)}</em></dt>
+<dd><p>Mapping from Excel sheet names to Excel sheet settings.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ledger.EXCEL_TABS">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">EXCEL_TABS</code><em class="property"> = ('factiongold', 'gold', 'item', 'character', 'location', 'mail', 'worn', 'raw')</em></dt>
+<dd><p>List of Excel sheet names corresponding to a dataview.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ledger.ExcelSheet">
+<em class="property">class </em><code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">ExcelSheet</code><span class="sig-paren">(</span><em class="sig-param">title</em>, <em class="sig-param">title_cols</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Data type for Excel sheet settings.</p>
+<dl class="method">
+<dt id="ledger.ExcelSheet.title">
+<em class="property">property </em><code class="sig-name descname">title</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ledger.ExcelSheet.title_cols">
+<em class="property">property </em><code class="sig-name descname">title_cols</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="ledger.FORMAT_TO_DIALECT">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">FORMAT_TO_DIALECT</code><em class="property"> = {'csv': 'excel', 'tsv': 'excel-tab', 'unix': 'unix'}</em></dt>
+<dd><p>Mapping from output file format to <code class="docutils literal notranslate"><span class="pre">csv.writer</span></code> dialect.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ledger.csv_output">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">csv_output</code><span class="sig-paren">(</span><em class="sig-param">output_file</em>, <em class="sig-param">header</em>, <em class="sig-param">row_data</em>, <em class="sig-param">checked_args</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#csv_output"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Outputs item data in a CSV format to file or console.</p>
+<p>Reformatting is carried out for columns containing gold values before
+output, if the data is not from a ‘raw’ view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/io.html#io.IOBase" title="(in Python v3.8)"><em>io.IOBase</em></a>) – output file.</p></li>
+<li><p><strong>header</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – header fields.</p></li>
+<li><p><strong>row_data</strong> – iterable containing tuples.</p></li>
+<li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
+program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ledger.excel_output">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">excel_output</code><span class="sig-paren">(</span><em class="sig-param">output</em>, <em class="sig-param">checked_args</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#excel_output"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Outputs item data to Excel.</p>
+<p>Since the Excel output format supports multiple data sheets, the output
+contains all the supported data views for convenient access to all data.</p>
+<p>In addition, basic attempts have been made to format the data for end-user
+friendly access while not inconveniencing further data processing within
+Excel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – output file name.</p></li>
+<li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
+program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ledger.export_possessions_to_file">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">export_possessions_to_file</code><span class="sig-paren">(</span><em class="sig-param">checked_args</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#export_possessions_to_file"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Exports item data to an output file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any existing output file with the same name is overwritten in effect.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
+program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ledger.gen_possessions_data">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">gen_possessions_data</code><span class="sig-paren">(</span><em class="sig-param">checked_args</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#gen_possessions_data"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields item data from specific addon data files in a WoW path.</p>
+<p>For the Possessions addon data, the account name is obtained from the
+path itself of the data file, then added back into the item data structure.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
+program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">account.AccountItemRecord</span></code> –</p>
+<dl class="simple">
+<dt>raw item data plus account name as</dt><dd><p>namedtuple.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ledger.internationalize">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">internationalize</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#internationalize"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ledger.main">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#main"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Starts the main application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ledger.report_query">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">report_query</code><span class="sig-paren">(</span><em class="sig-param">checked_args</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#report_query"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Reports the results from search mode to console.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
+program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ledger.setup">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#setup"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Sets up the debugging context for the main application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ledger.user_lang">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">user_lang</code><span class="sig-paren">(</span><em class="sig-param">lang=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#user_lang"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Sets and returns a language code. Default: ‘en’.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ledger.validate_inputs">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">validate_inputs</code><span class="sig-paren">(</span><em class="sig-param">args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#validate_inputs"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Validates the (critical) application arguments.</p>
+<p>WoW path information is obtained from and saved to configuration file.
+The presence of correctly named addon data files at the WoW path is checked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>namedtuple of validated program</dt><dd><p>arguments.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ledger.vprint">
+<code class="sig-prename descclassname">ledger.</code><code class="sig-name descname">vprint</code><span class="sig-paren">(</span><em class="sig-param">args</em>, <em class="sig-param">text</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ledger.html#vprint"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Helper function for verbose printing to console.</p>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
