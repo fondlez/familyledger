@@ -20,6 +20,8 @@ There are actually two programs (scripts) for this application:
 
 |
 
+It requires installing the `Possessions addon <https://github.com/Road-block/Possessions>`_ to your World of Warcraft folder.
+
 Download from Releases: https://github.com/anuber-Kronos/familyledger/releases/latest
 
 See the full documentation at: https://familyledger.readthedocs.io
