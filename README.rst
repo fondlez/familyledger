@@ -19,3 +19,5 @@ There are actually two programs (scripts) for this application:
    :class: center
 
 |
+
+Download from Releases: https://github.com/anuber-Kronos/familyledger/releases/latest
