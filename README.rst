@@ -19,5 +19,3 @@ There are actually two programs (scripts) for this application:
    :class: center
 
 |
-
-See the full documentation at: https://familyledger.readthedocs.io
