@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Known Issues and Bugs &#8212; Family Ledger Documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/cli.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="News" href="news.html" />
+    <link rel="prev" title="Ledger Web - Program Arguments" href="reference_ledger_web.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Family Ledger</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="contents.html">Contents</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Tutorial 1: Viewing items in your web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">Tutorial 2: Viewing items from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_console.html">Tutorial 3: Viewing items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search_console.html">Tutorial 4: Searching items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views Explained</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commandline_examples.html">More Command Line Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference_ledger.html">Ledger - Program Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference_ledger_web.html">Ledger Web - Program Arguments</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Known Issues and Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#reporting-bugs">Reporting Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="author.html">Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third_party.html">Credits</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Known Issues and Bugs</a><ul>
+<li><a class="reference internal" href="#mail">Mail</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reporting-bugs">Reporting Bugs</a><ul>
+<li><a class="reference internal" href="#upgrade-to-the-latest-version">Upgrade to the latest version</a></li>
+<li><a class="reference internal" href="#read-the-documentation">Read the documentation</a></li>
+<li><a class="reference internal" href="#use-the-official-family-ledger-issue-tracker-on-github">Use the official Family Ledger Issue tracker on GitHub</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="reference_ledger_web.html" title="Previous Chapter: Ledger Web - Program Arguments"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Ledger Web - ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="news.html" title="Next Chapter: News"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">News &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/bugs.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="known-issues-and-bugs">
+<span id="bugs"></span><h1>Known Issues and Bugs</h1>
+<p>This section lists known issues and bugs and gives some information on how to
+submit bug reports.</p>
+<div class="section" id="mail">
+<h2>Mail</h2>
+<p>Items in mail are sometimes reported incorrectly. This may be due to bug(s)
+in the Possessions addon or some other low-level quirk.</p>
+<p>Logging and checking the mail on a character may fix the item data, but it is
+not guaranteed. There appears to be no way to know beforehand when the mail is
+reporting incorrectly or cannot be fixed.</p>
+<p>In addition, valid item ids and therefore item links are usually not present
+for mail item data. These will therefore normally appear blank or be omitted
+entirely.</p>
+<p>For these reasons, mail item data is not included by default in views that do
+not show the storage location of items, e.g. in the Item View. If the opposite
+is desired, the command line option <cite>–include-mail</cite> forces mail item data to
+such views.</p>
+</div>
+</div>
+<div class="section" id="reporting-bugs">
+<span id="id1"></span><h1>Reporting Bugs</h1>
+<p>Here are some tips on reporting bugs in Family Ledger.</p>
+<div class="section" id="upgrade-to-the-latest-version">
+<h2>Upgrade to the latest version</h2>
+<p>The bug you are reporting may already be fixed in the latest version.</p>
+<p>Also, check the <a class="reference internal" href="news.html#news"><span class="std std-ref">News</span></a> section to see what has changed in the latest
+versions.</p>
+</div>
+<div class="section" id="read-the-documentation">
+<h2>Read the documentation</h2>
+<p>Read or search the Family Ledger documentation to see if the issue you are
+encountering is already explained.</p>
+</div>
+<div class="section" id="use-the-official-family-ledger-issue-tracker-on-github">
+<h2>Use the official Family Ledger Issue tracker on GitHub</h2>
+<p>The official Family Ledger
+<a class="reference external" href="https://github.com/anuber-Kronos/familyledger/issues">Issue tracker is on GitHub</a>.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

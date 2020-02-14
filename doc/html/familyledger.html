@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>familyledger package &#8212; Family Ledger Documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/cli.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Family Ledger</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="contents.html">Contents</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Tutorial 1: Viewing items in your web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_file.html">Tutorial 2: Viewing items from a file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_console.html">Tutorial 3: Viewing items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search_console.html">Tutorial 4: Searching items in the console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views Explained</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commandline_examples.html">More Command Line Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference_ledger.html">Ledger - Program Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference_ledger_web.html">Ledger Web - Program Arguments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bugs.html">Known Issues and Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bugs.html#reporting-bugs">Reporting Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="author.html">Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third_party.html">Credits</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">familyledger package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-familyledger.commandline">familyledger.commandline module</a></li>
+<li><a class="reference internal" href="#module-familyledger.config">familyledger.config module</a></li>
+<li><a class="reference internal" href="#module-familyledger.dataview">familyledger.dataview module</a></li>
+<li><a class="reference internal" href="#module-familyledger.ledger">familyledger.ledger module</a></li>
+<li><a class="reference internal" href="#module-familyledger.ledger_web">familyledger.ledger_web module</a></li>
+<li><a class="reference internal" href="#module-familyledger.possessions">familyledger.possessions module</a></li>
+<li><a class="reference internal" href="#module-familyledger.version">familyledger.version module</a></li>
+<li><a class="reference internal" href="#module-familyledger">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/familyledger.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="familyledger-package">
+<h1>familyledger package</h1>
+<div class="section" id="subpackages">
+<h2>Subpackages</h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="familyledger.utils.html">familyledger.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="familyledger.utils.html#module-familyledger.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules</h2>
+</div>
+<div class="section" id="module-familyledger.commandline">
+<span id="familyledger-commandline-module"></span><h2>familyledger.commandline module</h2>
+<p>A module for parsing command line application arguments.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="data">
+<dt id="familyledger.commandline.CONSOLE_FORMATS">
+<code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">CONSOLE_FORMATS</code><em class="property"> = ('csv', 'tsv', 'unix')</em></dt>
+<dd><p>Available formats for display on console.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.commandline.CheckedArgs">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">CheckedArgs</code><span class="sig-paren">(</span><em class="sig-param">wowpath</em>, <em class="sig-param">format</em>, <em class="sig-param">output</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Critical application arguments.</p>
+<dl class="method">
+<dt id="familyledger.commandline.CheckedArgs.format">
+<em class="property">property </em><code class="sig-name descname">format</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.commandline.CheckedArgs.output">
+<em class="property">property </em><code class="sig-name descname">output</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.commandline.CheckedArgs.wowpath">
+<em class="property">property </em><code class="sig-name descname">wowpath</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.commandline.EXPORT_FORMATS">
+<code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">EXPORT_FORMATS</code><em class="property"> = ('csv', 'excel', 'tsv', 'unix')</em></dt>
+<dd><p>Available formats for export to file.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.commandline.FORMAT_EXTENSION">
+<code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">FORMAT_EXTENSION</code><em class="property"> = {'csv': '.csv', 'excel': '.xlsx', 'tsv': '.tsv', 'unix': '.csv'}</em></dt>
+<dd><p>Mapping from output format type to filename extension.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.commandline.check_args">
+<code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">check_args</code><span class="sig-paren">(</span><em class="sig-param">args</em>, <em class="sig-param">config</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/commandline.html#check_args"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Checks command line arguments and returns a tuple of validated arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>namedtuple of validated program arguments.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#familyledger.commandline.CheckedArgs" title="familyledger.commandline.CheckedArgs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CheckedArgs</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.commandline.check_bool">
+<code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">check_bool</code><span class="sig-paren">(</span><em class="sig-param">bool_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/commandline.html#check_bool"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Checks for the presence of a valid boolean from a string.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Utility intended for use in type validation within arguments of
+<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bool_str</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – string representing a boolean (case-insensitive).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>boolean value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>argparse.ArgumentTypeError</strong> – if input does not represent boolean.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.commandline.check_output">
+<code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">check_output</code><span class="sig-paren">(</span><em class="sig-param">output_file</em>, <em class="sig-param">output_format</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/commandline.html#check_output"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Checks and returns the output filename.</p>
+<p>If no output filename is selected, a default is provided with a file
+extension corresponding to the selected format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – output filename.</p></li>
+<li><p><strong>output_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – output format.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>output filename.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.commandline.check_output_format">
+<code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">check_output_format</code><span class="sig-paren">(</span><em class="sig-param">output_file</em>, <em class="sig-param">requested_format</em>, <em class="sig-param">search_mode</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/commandline.html#check_output_format"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Checks and returns the output format selected by the user.</p>
+<p>If the output is to the console, either due to the output file being ‘-‘
+or search mode is selected, then only a subset of formats are available
+(text only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – output filename.</p></li>
+<li><p><strong>requested_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – user format selection.</p></li>
+<li><p><strong>search_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – flag for whether in search mode.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>output format.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.commandline.check_view">
+<code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">check_view</code><span class="sig-paren">(</span><em class="sig-param">choice</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/commandline.html#check_view"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Checks for a valid dataview selection that begins with a substring.</p>
+<p>This function will return the input unchanged for an invalid choice to
+allow further validation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Utility intended for use in type validation of string choices within
+arguments of <a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>choice</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – input text.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dataview name or input text.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.commandline.check_wowpath">
+<code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">check_wowpath</code><span class="sig-paren">(</span><em class="sig-param">wowpath</em>, <em class="sig-param">saved_wowpath=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/commandline.html#check_wowpath"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Checks and returns the path to the World of Warcraft directory.</p>
+<p>If no path is provided or the path does not exist, a graphical request
+is made with the initial directory defaulting to any previously saved
+path.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.commandline.options">
+<code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">options</code><span class="sig-paren">(</span><em class="sig-param">gui=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/commandline.html#options"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Defines arguments for a command line parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>gui</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – flag indicating re-use of command line arguments in
+graphical user interface programs.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>commandline argument parser.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-familyledger.config">
+<span id="familyledger-config-module"></span><h2>familyledger.config module</h2>
+<p>A module for storing and retrieving basic application configuration data.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="class">
+<dt id="familyledger.config.Config">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.config.</code><code class="sig-name descname">Config</code><a class="reference internal" href="_modules/familyledger/config.html#Config"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Basic configuration type.</p>
+<dl class="method">
+<dt id="familyledger.config.Config.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/config.html#Config.save"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Saves a configuration object to a ‘CONFIG’ file (overwritten).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.config.Singleton">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.config.</code><code class="sig-name descname">Singleton</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/config.html#Singleton"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a></p>
+<p>Singleton metaclass.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-familyledger.dataview">
+<span id="familyledger-dataview-module"></span><h2>familyledger.dataview module</h2>
+<p>A module for creating user-friendly views of WoW account item data.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="data">
+<dt id="familyledger.dataview.CONTAINER_LOCATION">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">CONTAINER_LOCATION</code><em class="property"> = {'bag01': 'bags', 'bag02': 'bags', 'bag03': 'bags', 'bag04': 'bags', 'bag05': 'bank', 'bag06': 'bank', 'bag07': 'bank', 'bag08': 'bank', 'bag09': 'bank', 'bag10': 'bank', 'bank': 'bank', 'inventory': 'bags', 'mail': 'mail', 'player': 'player'}</em></dt>
+<dd><p>Mapping from container to generalized location.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.dataview.CharacterViewRecord">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">CharacterViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">account</em>, <em class="sig-param">faction</em>, <em class="sig-param">character</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_rarity</em>, <em class="sig-param">item_quantity</em>, <em class="sig-param">item_link</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Data type for the ‘character’ dataview.</p>
+<dl class="method">
+<dt id="familyledger.dataview.CharacterViewRecord.account">
+<em class="property">property </em><code class="sig-name descname">account</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.CharacterViewRecord.character">
+<em class="property">property </em><code class="sig-name descname">character</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.CharacterViewRecord.faction">
+<em class="property">property </em><code class="sig-name descname">faction</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.CharacterViewRecord.item_link">
+<em class="property">property </em><code class="sig-name descname">item_link</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.CharacterViewRecord.item_name">
+<em class="property">property </em><code class="sig-name descname">item_name</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.CharacterViewRecord.item_quantity">
+<em class="property">property </em><code class="sig-name descname">item_quantity</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.CharacterViewRecord.item_rarity">
+<em class="property">property </em><code class="sig-name descname">item_rarity</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.CharacterViewRecord.realm">
+<em class="property">property </em><code class="sig-name descname">realm</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.dataview.DATAVIEWS">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">DATAVIEWS</code><em class="property"> = ('character', 'location', 'mail', 'item', 'worn', 'gold', 'factiongold', 'raw')</em></dt>
+<dd><p>List of available dataviews.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.dataview.DataView">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">DataView</code><span class="sig-paren">(</span><em class="sig-param">header</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#DataView"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Represents a dataview type.</p>
+<dl class="attribute">
+<dt id="familyledger.dataview.DataView.header">
+<code class="sig-name descname">header</code></dt>
+<dd><p>tuple of strings listing the view field names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)">tuple</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="familyledger.dataview.DataView.data">
+<code class="sig-name descname">data</code></dt>
+<dd><p>view data generator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.dataview.DataViewFactory">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">DataViewFactory</code><a class="reference internal" href="_modules/familyledger/dataview.html#DataViewFactory"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Factory for DataView objects based on view name.</p>
+<dl class="method">
+<dt id="familyledger.dataview.DataViewFactory.dispatch">
+<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param">view_name</em>, <em class="sig-param">input_data</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#DataViewFactory.dispatch"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns a Dataview object based on view name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>view_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – view name.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dataview object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#familyledger.dataview.DataView" title="familyledger.dataview.DataView">DataView</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.dataview.EQUIPPED_SLOT_NAME">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">EQUIPPED_SLOT_NAME</code><em class="property"> = {1: '01-Head', 2: '02-Neck', 3: '03-Shoulders', 4: '04-Back', 5: '05-Chest', 6: '06-Shirt', 7: '07-Tabard', 8: '08-Wrist', 9: '09-Hands', 10: '10-Waist', 11: '11-Legs', 12: '12-Feet', 13: '13-Ring1', 14: '14-Ring2', 15: '15-Trinket1', 16: '16-Trinket2', 17: '17-Main Hand', 18: '18-Off Hand', 19: '19-Ranged', 20: '20-Ammo'}</em></dt>
+<dd><p>Mapping from raw slot id of an equipped slot to slot name</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.dataview.FactionGoldViewRecord">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">FactionGoldViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">faction</em>, <em class="sig-param">gold</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Data type for the ‘factiongold’ dataview.</p>
+<dl class="method">
+<dt id="familyledger.dataview.FactionGoldViewRecord.faction">
+<em class="property">property </em><code class="sig-name descname">faction</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.FactionGoldViewRecord.gold">
+<em class="property">property </em><code class="sig-name descname">gold</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.FactionGoldViewRecord.realm">
+<em class="property">property </em><code class="sig-name descname">realm</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.dataview.GoldViewRecord">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">GoldViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">account</em>, <em class="sig-param">faction</em>, <em class="sig-param">character</em>, <em class="sig-param">gold</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Data type for the ‘gold’ dataview.</p>
+<dl class="method">
+<dt id="familyledger.dataview.GoldViewRecord.account">
+<em class="property">property </em><code class="sig-name descname">account</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.GoldViewRecord.character">
+<em class="property">property </em><code class="sig-name descname">character</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.GoldViewRecord.faction">
+<em class="property">property </em><code class="sig-name descname">faction</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.GoldViewRecord.gold">
+<em class="property">property </em><code class="sig-name descname">gold</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.GoldViewRecord.realm">
+<em class="property">property </em><code class="sig-name descname">realm</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.dataview.ITEM_LINK_FORMAT">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">ITEM_LINK_FORMAT</code><em class="property"> = {'classicdb': 'https://classicdb.ch/?item={}', 'id': '{}', 'twinhead': 'https://vanilla-twinhead.twinstar.cz/?item={}', 'wowhead': 'https://classic.wowhead.com/item={}'}</em></dt>
+<dd><p>Mapping from item link format to the link representation.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.dataview.ItemHolders">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">ItemHolders</code><span class="sig-paren">(</span><em class="sig-param">holder</em>, <em class="sig-param">quantity</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#ItemHolders"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Utility class identifying the character with max. count for an item.</p>
+<dl class="attribute">
+<dt id="familyledger.dataview.ItemHolders.holders">
+<code class="sig-name descname">holders</code></dt>
+<dd><p>dicionary with character name key, item quantity value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.ItemHolders.max">
+<code class="sig-name descname">max</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#ItemHolders.max"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns the maximum item count and associated character name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.ItemHolders.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">holder</em>, <em class="sig-param">quantity</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#ItemHolders.update"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Updates the item count for a given character name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>holder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – character name.</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – item count.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.dataview.ItemViewRecord">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">ItemViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_rarity</em>, <em class="sig-param">item_quantity</em>, <em class="sig-param">max</em>, <em class="sig-param">item_link</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Data type for the ‘item’ dataview.</p>
+<dl class="method">
+<dt id="familyledger.dataview.ItemViewRecord.item_link">
+<em class="property">property </em><code class="sig-name descname">item_link</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.ItemViewRecord.item_name">
+<em class="property">property </em><code class="sig-name descname">item_name</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.ItemViewRecord.item_quantity">
+<em class="property">property </em><code class="sig-name descname">item_quantity</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.ItemViewRecord.item_rarity">
+<em class="property">property </em><code class="sig-name descname">item_rarity</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.ItemViewRecord.max">
+<em class="property">property </em><code class="sig-name descname">max</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.ItemViewRecord.realm">
+<em class="property">property </em><code class="sig-name descname">realm</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.dataview.LocationViewRecord">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">LocationViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">account</em>, <em class="sig-param">faction</em>, <em class="sig-param">character</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_rarity</em>, <em class="sig-param">item_quantity</em>, <em class="sig-param">location</em>, <em class="sig-param">item_link</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Data type for the ‘location’ dataview.</p>
+<dl class="method">
+<dt id="familyledger.dataview.LocationViewRecord.account">
+<em class="property">property </em><code class="sig-name descname">account</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.LocationViewRecord.character">
+<em class="property">property </em><code class="sig-name descname">character</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.LocationViewRecord.faction">
+<em class="property">property </em><code class="sig-name descname">faction</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.LocationViewRecord.item_link">
+<em class="property">property </em><code class="sig-name descname">item_link</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.LocationViewRecord.item_name">
+<em class="property">property </em><code class="sig-name descname">item_name</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.LocationViewRecord.item_quantity">
+<em class="property">property </em><code class="sig-name descname">item_quantity</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.LocationViewRecord.item_rarity">
+<em class="property">property </em><code class="sig-name descname">item_rarity</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.LocationViewRecord.location">
+<em class="property">property </em><code class="sig-name descname">location</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.LocationViewRecord.realm">
+<em class="property">property </em><code class="sig-name descname">realm</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.dataview.MailViewRecord">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">MailViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">account</em>, <em class="sig-param">faction</em>, <em class="sig-param">character</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_quantity</em>, <em class="sig-param">location</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Data type for the ‘mail’ dataview.</p>
+<dl class="method">
+<dt id="familyledger.dataview.MailViewRecord.account">
+<em class="property">property </em><code class="sig-name descname">account</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.MailViewRecord.character">
+<em class="property">property </em><code class="sig-name descname">character</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.MailViewRecord.faction">
+<em class="property">property </em><code class="sig-name descname">faction</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.MailViewRecord.item_name">
+<em class="property">property </em><code class="sig-name descname">item_name</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.MailViewRecord.item_quantity">
+<em class="property">property </em><code class="sig-name descname">item_quantity</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.MailViewRecord.location">
+<em class="property">property </em><code class="sig-name descname">location</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.MailViewRecord.realm">
+<em class="property">property </em><code class="sig-name descname">realm</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.dataview.PRESENTATION_FORMATS">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">PRESENTATION_FORMATS</code><em class="property"> = {'gold': {'factiongold', 'gold'}, 'numerical': {'factiongold', 'gold', 'item_id', 'item_quantity', 'slot_id'}, 'url': {'item_link'}}</em></dt>
+<dd><p>Mapping from presentation format to set of Possessions data fields.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.dataview.WornViewRecord">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">WornViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">account</em>, <em class="sig-param">faction</em>, <em class="sig-param">character</em>, <em class="sig-param">slot</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_rarity</em>, <em class="sig-param">item_link</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Data type for the ‘worn’ dataview.</p>
+<dl class="method">
+<dt id="familyledger.dataview.WornViewRecord.account">
+<em class="property">property </em><code class="sig-name descname">account</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.WornViewRecord.character">
+<em class="property">property </em><code class="sig-name descname">character</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.WornViewRecord.faction">
+<em class="property">property </em><code class="sig-name descname">faction</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.WornViewRecord.item_link">
+<em class="property">property </em><code class="sig-name descname">item_link</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.WornViewRecord.item_name">
+<em class="property">property </em><code class="sig-name descname">item_name</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.WornViewRecord.item_rarity">
+<em class="property">property </em><code class="sig-name descname">item_rarity</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.WornViewRecord.realm">
+<em class="property">property </em><code class="sig-name descname">realm</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.dataview.WornViewRecord.slot">
+<em class="property">property </em><code class="sig-name descname">slot</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.create_view">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">create_view</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">args</em>, <em class="sig-param">called_view=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#create_view"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Creates a dataview from raw input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dataview object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#familyledger.dataview.DataView" title="familyledger.dataview.DataView">DataView</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.format_item_link">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">format_item_link</code><span class="sig-paren">(</span><em class="sig-param">item_id</em>, <em class="sig-param">db_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#format_item_link"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Formats an item id as an item link based on a format name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – item id.</p></li>
+<li><p><strong>db_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – format name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>item link.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.gen_view_character">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">gen_view_character</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#gen_view_character"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields data for a ‘character’ dataview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><a class="reference internal" href="#familyledger.dataview.CharacterViewRecord" title="familyledger.dataview.CharacterViewRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CharacterViewRecord</span></code></a> – ‘character’ view data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.gen_view_factiongold">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">gen_view_factiongold</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#gen_view_factiongold"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields data for a ‘factiongold’ dataview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><a class="reference internal" href="#familyledger.dataview.FactionGoldViewRecord" title="familyledger.dataview.FactionGoldViewRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FactionGoldViewRecord</span></code></a> – ‘factiongold’ view data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.gen_view_gold">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">gen_view_gold</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#gen_view_gold"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields data for a ‘gold’ dataview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><a class="reference internal" href="#familyledger.dataview.GoldViewRecord" title="familyledger.dataview.GoldViewRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GoldViewRecord</span></code></a> – ‘gold’ view data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.gen_view_item">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">gen_view_item</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#gen_view_item"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields data for an ‘item’ dataview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><a class="reference internal" href="#familyledger.dataview.ItemViewRecord" title="familyledger.dataview.ItemViewRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ItemViewRecord</span></code></a> – ‘Item’ view data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.gen_view_location">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">gen_view_location</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">args</em>, <em class="sig-param">only_mail=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#gen_view_location"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields data for a ‘location’ dataview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><a class="reference internal" href="#familyledger.dataview.LocationViewRecord" title="familyledger.dataview.LocationViewRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LocationViewRecord</span></code></a> – ‘location’ view data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.gen_view_mail">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">gen_view_mail</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#gen_view_mail"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields data for a ‘mail’ dataview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><a class="reference internal" href="#familyledger.dataview.MailViewRecord" title="familyledger.dataview.MailViewRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MailViewRecord</span></code></a> – ‘mail’ view data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.gen_view_raw">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">gen_view_raw</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#gen_view_raw"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields data for a ‘raw’ dataview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RawViewRecord</span></code> – ‘raw’ view data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.gen_view_worn">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">gen_view_worn</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#gen_view_worn"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields data for a ‘worn’ dataview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><a class="reference internal" href="#familyledger.dataview.WornViewRecord" title="familyledger.dataview.WornViewRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WornViewRecord</span></code></a> – ‘worn’ view data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.query_dataview">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">query_dataview</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#query_dataview"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Creates and queries a dataview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>filtered view data based on a query.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.dataview.search">
+<code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">search</code><span class="sig-paren">(</span><em class="sig-param">input_data</em>, <em class="sig-param">pattern</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#search"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Searches nested data for a pattern returning a list of matches.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> – generator for list of tuples or a sequence of tuples.</p></li>
+<li><p><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – regular expression pattern.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>tuple</em> – data row of fields.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-familyledger.ledger">
+<span id="familyledger-ledger-module"></span><h2>familyledger.ledger module</h2>
+<p>The driving module for the command line version of Family Ledger.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="data">
+<dt id="familyledger.ledger.EXCEL_SHEETS">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">EXCEL_SHEETS</code><em class="property"> = {'about': ExcelSheet(title='About This Data', title_cols=2), 'character': ExcelSheet(title='Items Per Character', title_cols=3), 'factiongold': ExcelSheet(title='Gold Per Faction', title_cols=3), 'gold': ExcelSheet(title='Gold Per Character', title_cols=3), 'item': ExcelSheet(title='Items Per Server', title_cols=2), 'location': ExcelSheet(title='Items Per Character - Location', title_cols=4), 'mail': ExcelSheet(title='Items Per Character - Mail', title_cols=4), 'raw': ExcelSheet(title='Original Item Data', title_cols=3), 'worn': ExcelSheet(title='Items Per Character - Worn', title_cols=4)}</em></dt>
+<dd><p>Mapping from Excel sheet names to Excel sheet settings.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.ledger.EXCEL_TABS">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">EXCEL_TABS</code><em class="property"> = ('factiongold', 'gold', 'item', 'character', 'location', 'mail', 'worn', 'raw')</em></dt>
+<dd><p>List of Excel sheet names corresponding to a dataview.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.ledger.ExcelSheet">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">ExcelSheet</code><span class="sig-paren">(</span><em class="sig-param">title</em>, <em class="sig-param">title_cols</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Data type for Excel sheet settings.</p>
+<dl class="method">
+<dt id="familyledger.ledger.ExcelSheet.title">
+<em class="property">property </em><code class="sig-name descname">title</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger.ExcelSheet.title_cols">
+<em class="property">property </em><code class="sig-name descname">title_cols</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.ledger.FORMAT_TO_DIALECT">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">FORMAT_TO_DIALECT</code><em class="property"> = {'csv': 'excel', 'tsv': 'excel-tab', 'unix': 'unix'}</em></dt>
+<dd><p>Mapping from output file format to <code class="docutils literal notranslate"><span class="pre">csv.writer</span></code> dialect.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.csv_output">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">csv_output</code><span class="sig-paren">(</span><em class="sig-param">output_file</em>, <em class="sig-param">header</em>, <em class="sig-param">row_data</em>, <em class="sig-param">checked_args</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#csv_output"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Outputs item data in a CSV format to file or console.</p>
+<p>Reformatting is carried out for columns containing gold values before
+output, if the data is not from a ‘raw’ view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/io.html#io.IOBase" title="(in Python v3.8)"><em>io.IOBase</em></a>) – output file.</p></li>
+<li><p><strong>header</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – header fields.</p></li>
+<li><p><strong>row_data</strong> – iterable containing tuples.</p></li>
+<li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
+program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.excel_output">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">excel_output</code><span class="sig-paren">(</span><em class="sig-param">output</em>, <em class="sig-param">checked_args</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#excel_output"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Outputs item data to Excel.</p>
+<p>Since the Excel output format supports multiple data sheets, the output
+contains all the supported data views for convenient access to all data.</p>
+<p>In addition, basic attempts have been made to format the data for end-user
+friendly access while not inconveniencing further data processing within
+Excel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – output file name.</p></li>
+<li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
+program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.export_possessions_to_file">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">export_possessions_to_file</code><span class="sig-paren">(</span><em class="sig-param">checked_args</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#export_possessions_to_file"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Exports item data to an output file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any existing output file with the same name is overwritten in effect.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
+program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.gen_possessions_data">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">gen_possessions_data</code><span class="sig-paren">(</span><em class="sig-param">checked_args</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#gen_possessions_data"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields item data from specific addon data files in a WoW path.</p>
+<p>For the Possessions addon data, the account name is obtained from the
+path itself of the data file, then added back into the item data structure.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
+program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">account.AccountItemRecord</span></code> –</p>
+<dl class="simple">
+<dt>raw item data plus account name as</dt><dd><p>namedtuple.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.internationalize">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">internationalize</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#internationalize"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.main">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#main"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Starts the main application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.report_query">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">report_query</code><span class="sig-paren">(</span><em class="sig-param">checked_args</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#report_query"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Reports the results from search mode to console.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
+program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.setup">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#setup"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Sets up the debugging context for the main application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.user_lang">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">user_lang</code><span class="sig-paren">(</span><em class="sig-param">lang=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#user_lang"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Sets and returns a language code. Default: ‘en’.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.validate_inputs">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">validate_inputs</code><span class="sig-paren">(</span><em class="sig-param">args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#validate_inputs"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Validates the (critical) application arguments.</p>
+<p>WoW path information is obtained from and saved to configuration file.
+The presence of correctly named addon data files at the WoW path is checked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>namedtuple of validated program</dt><dd><p>arguments.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger.vprint">
+<code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">vprint</code><span class="sig-paren">(</span><em class="sig-param">args</em>, <em class="sig-param">text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger.html#vprint"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Helper function for verbose printing to console.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-familyledger.ledger_web">
+<span id="familyledger-ledger-web-module"></span><h2>familyledger.ledger_web module</h2>
+<p>The driving module for the web version of Family Ledger.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="class">
+<dt id="familyledger.ledger_web.LedgerWeb">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.ledger_web.</code><code class="sig-name descname">LedgerWeb</code><span class="sig-paren">(</span><em class="sig-param">*pargs</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">remi.server.App</span></code></p>
+<p>Main appplication class.</p>
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.data_refresh">
+<code class="sig-name descname">data_refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.data_refresh"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Helper function: (re-)fetches data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.display_data">
+<code class="sig-name descname">display_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.display_data"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Helper function: displays tabular data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.main">
+<code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">*pargs</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.main"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Sets up the core widgets of the graphical user interface.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.on_close_pressed">
+<code class="sig-name descname">on_close_pressed</code><span class="sig-paren">(</span><em class="sig-param">widget</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.on_close_pressed"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Runs when the user clicks on the Close button.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.on_enter_key">
+<code class="sig-name descname">on_enter_key</code><span class="sig-paren">(</span><em class="sig-param">new_value</em>, <em class="sig-param">old_value</em>, <em class="sig-param">keycode</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.on_enter_key"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Runs when the user clicks Enter in the text input box.</p>
+<p>If an Enter keycode is detected, the search text box ‘onchange’ event
+is activated and the search button pressed action is emulated.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.on_refresh_pressed">
+<code class="sig-name descname">on_refresh_pressed</code><span class="sig-paren">(</span><em class="sig-param">widget</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.on_refresh_pressed"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Runs when a user clicks on the ‘Refresh’ button.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.on_search_pressed">
+<code class="sig-name descname">on_search_pressed</code><span class="sig-paren">(</span><em class="sig-param">widget</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.on_search_pressed"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Runs when a user clicks on the ‘Search’ button.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.on_table_row_click">
+<code class="sig-name descname">on_table_row_click</code><span class="sig-paren">(</span><em class="sig-param">table</em>, <em class="sig-param">row</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.on_table_row_click"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Runs when the user mouse clicks on a table row.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.on_view_changed">
+<code class="sig-name descname">on_view_changed</code><span class="sig-paren">(</span><em class="sig-param">widget</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.on_view_changed"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Runs when a user changes the dropdown list value to select a View.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.search">
+<code class="sig-name descname">search</code><span class="sig-paren">(</span><em class="sig-param">pattern</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.search"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Searches view data for a pattern, returning matched rows.</p>
+<p>The search for the pattern is case-insensitive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – string containing a regular expression.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>iterable</em> – matching row from iterable view data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.sort">
+<code class="sig-name descname">sort</code><span class="sig-paren">(</span><em class="sig-param">field</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.sort"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Sorts nested attributed data by attribute name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>field</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – attribute name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.view_from_dropdown">
+<code class="sig-name descname">view_from_dropdown</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.view_from_dropdown"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Maps the View dropdown item text to a valid view name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.view_refresh">
+<code class="sig-name descname">view_refresh</code><span class="sig-paren">(</span><em class="sig-param">view_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.view_refresh"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Helper function: creates a view from the fetched data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="familyledger.ledger_web.LedgerWeb.vprint">
+<code class="sig-name descname">vprint</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb.vprint"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Helper function for verbose printing to console.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger_web.detect_url">
+<code class="sig-prename descclassname">familyledger.ledger_web.</code><code class="sig-name descname">detect_url</code><span class="sig-paren">(</span><em class="sig-param">link</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#detect_url"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns whether input text starts with a simple and common URL type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>link</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – potential URL.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if URL detected, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger_web.internationalize">
+<code class="sig-prename descclassname">familyledger.ledger_web.</code><code class="sig-name descname">internationalize</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#internationalize"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger_web.main">
+<code class="sig-prename descclassname">familyledger.ledger_web.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#main"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Starts the main application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.ledger_web.setup">
+<code class="sig-prename descclassname">familyledger.ledger_web.</code><code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#setup"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Sets up the debugging context for the main application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-familyledger.possessions">
+<span id="familyledger-possessions-module"></span><h2>familyledger.possessions module</h2>
+<p>A module responsible for parsing saved World of Warcraft item data per account.</p>
+<p>This module currently only makes use of the user data from the vanilla patch
+1.12 World of Warcraft (WoW) addon called <a class="reference external" href="https://github.com/Road-block/Possessions">Possessions</a>. WoW addons and saved
+data are written in the Lua language. Therefore, this module uses a third-party
+Lua expression parser (<a class="reference external" href="https://github.com/SirAnthony/slpp">slpp</a>) to get data into Python. The data is flattened
+and reformatted for higher level processing by users of this module.</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="data">
+<dt id="familyledger.possessions.CONTAINER_NAME">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">CONTAINER_NAME</code><em class="property"> = {-3: 'mail', -2: 'player', -1: 'bank', 0: 'inventory', 1: 'bag01', 2: 'bag02', 3: 'bag03', 4: 'bag04', 5: 'bag05', 6: 'bag06', 7: 'bag07', 8: 'bag08', 9: 'bag09', 10: 'bag10'}</em></dt>
+<dd><p>Mapping from raw container index to container name.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.possessions.ITEM_INDEX">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">ITEM_INDEX</code><em class="property"> = {'item_icon': 2, 'item_id': 0, 'item_name': 1, 'item_quantity': 3, 'item_rarity': 4}</em></dt>
+<dd><p>Reverse mapping from item property to raw item index.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.possessions.ITEM_RARITY">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">ITEM_RARITY</code><em class="property"> = {-1: '', 0: '0-Poor', 1: '1-Common', 2: '2-Uncommon', 3: '3-Rare', 4: '4-Epic', 5: '5-Legendary', 6: '6-Artifact'}</em></dt>
+<dd><p>Mapping from raw item rarity to rarity name.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="familyledger.possessions.ItemRecord">
+<em class="property">class </em><code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">ItemRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">character</em>, <em class="sig-param">faction</em>, <em class="sig-param">gold</em>, <em class="sig-param">container</em>, <em class="sig-param">slot_id</em>, <em class="sig-param">item_id</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_icon</em>, <em class="sig-param">item_quantity</em>, <em class="sig-param">item_rarity</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Data type capturing the raw item data from the Possessions addon.</p>
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.character">
+<em class="property">property </em><code class="sig-name descname">character</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.container">
+<em class="property">property </em><code class="sig-name descname">container</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.faction">
+<em class="property">property </em><code class="sig-name descname">faction</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.gold">
+<em class="property">property </em><code class="sig-name descname">gold</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.item_icon">
+<em class="property">property </em><code class="sig-name descname">item_icon</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.item_id">
+<em class="property">property </em><code class="sig-name descname">item_id</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.item_name">
+<em class="property">property </em><code class="sig-name descname">item_name</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.item_quantity">
+<em class="property">property </em><code class="sig-name descname">item_quantity</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.item_rarity">
+<em class="property">property </em><code class="sig-name descname">item_rarity</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.realm">
+<em class="property">property </em><code class="sig-name descname">realm</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="familyledger.possessions.ItemRecord.slot_id">
+<em class="property">property </em><code class="sig-name descname">slot_id</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="familyledger.possessions.POSSESSIONS_VAR">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">POSSESSIONS_VAR</code><em class="property"> = '^\\s*PossessionsData = '</em></dt>
+<dd><p>Matching pattern for unneeded variable assignment in the Lua text input.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.possessions.check_possessions">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">check_possessions</code><span class="sig-paren">(</span><em class="sig-param">wowpath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/possessions.html#check_possessions"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Checks for the existence of Possessions addon data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wowpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – path to WoW folder.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if files found, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.possessions.filter_for_realms">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">filter_for_realms</code><span class="sig-paren">(</span><em class="sig-param">account_data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/possessions.html#filter_for_realms"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Filters out non-realm, non-item information from the raw data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>account_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – Possessions addon data which includes non-item data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.possessions.find_possessions">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">find_possessions</code><span class="sig-paren">(</span><em class="sig-param">wowpath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/possessions.html#find_possessions"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns the path information for the Possessions addon raw data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wowpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – path to WoW folder.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>paths matching Possessions
+addon data files.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.possessions.gen_itemrecord">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">gen_itemrecord</code><span class="sig-paren">(</span><em class="sig-param">account_data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/possessions.html#gen_itemrecord"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Yields item data for output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>account_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – converted item data for all characters.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><a class="reference internal" href="#familyledger.possessions.ItemRecord" title="familyledger.possessions.ItemRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ItemRecord</span></code></a> – individual item information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.possessions.lua_statement_to_expression">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">lua_statement_to_expression</code><span class="sig-paren">(</span><em class="sig-param">lua_statement</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/possessions.html#lua_statement_to_expression"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Converts the Lua text to a Lua expression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lua_statement</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Lua statement containing a single known variable
+assignment.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>text containing a Lua expression.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.possessions.lua_to_python">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">lua_to_python</code><span class="sig-paren">(</span><em class="sig-param">lua_data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/possessions.html#lua_to_python"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Translates Lua data to a Python expression and evaluates it.</p>
+<p>Item data in the Possessions data file is in this format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PossessionsData</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">[</span><span class="s2">&quot;Kronos&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">[</span><span class="s2">&quot;harrypotter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Thorium Lockbox&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Interface\Icons\INV_Misc_OrnateBox&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                        <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;5759&quot;</span><span class="p">,</span>
+                    <span class="p">},</span>
+                    <span class="o">...</span>
+</pre></div>
+</div>
+<p>The ‘PossessionsData = ‘ portion, indicating the start of a Lua statement
+of a variable assignment, is not required and would cause an error. Only the
+right hand side of the assignment, i.e. the Lua expression is needed. This
+function translates the Lua input into a Python expression, evaluates it
+and so produces Python item data in its ‘raw’ format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lua_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – text containing a Lua statement.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>item data in raw format.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="familyledger.possessions.read">
+<code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/possessions.html#read"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Reads a data file containing a Lua expression and returns item data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – data file containing a Lua expression.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>generator of <a class="reference internal" href="#familyledger.possessions.ItemRecord" title="familyledger.possessions.ItemRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ItemRecord</span></code></a> item
+information.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-familyledger.version">
+<span id="familyledger-version-module"></span><h2>familyledger.version module</h2>
+<p>A module to supply the application version</p>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<dl class="function">
+<dt id="familyledger.version.get_version">
+<code class="sig-prename descclassname">familyledger.version.</code><code class="sig-name descname">get_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/version.html#get_version"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns the application version from a VERSION file.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-familyledger">
+<span id="module-contents"></span><h2>Module contents</h2>
+<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
