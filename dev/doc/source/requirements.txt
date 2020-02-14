@@ -1,1 +1,2 @@
 sphinx-bootstrap-theme==0.7.1
+tqdm==4.42.1
