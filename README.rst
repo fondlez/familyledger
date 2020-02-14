@@ -15,7 +15,7 @@ There are actually two programs (scripts) for this application:
 
 |
 
-.. image:: https://familyledger.readthedocs.io/_images/demo.png
+.. image:: dev/doc/source/_images/demo.png
    :class: center
 
 |
