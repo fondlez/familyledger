@@ -24,7 +24,7 @@ import sphinx_bootstrap_theme
 import sphinx_rtd_theme
 from tqdm import tqdm
 
-from familyledger.version import __version__
+# from familyledger.version import __version__
 
 
 sys.path.insert(0, os.path.abspath('../../../familyledger'))
@@ -72,7 +72,7 @@ author = 'fondlez "Anuber"-Kronos'
 # built documents.
 #
 # The short X.Y version.
-version = __version__
+version = '0.1.0'
 # The full version, including alpha/beta/rc tags.
 release = version
 
