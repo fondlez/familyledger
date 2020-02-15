@@ -24,6 +24,6 @@ It requires installing the `Possessions addon <https://github.com/Road-block/Pos
 
 Download from Releases: https://github.com/anuber-Kronos/familyledger/releases/latest
 
-Alternatively, if you know Python, it is available via ``pip install familyledger`` on the official Python `PyPi package index <https://pypi.org/project/FamilyLedger/>`.
+Alternatively, if you know Python, it is available via ``pip install familyledger`` on the official Python `PyPi package index <https://pypi.org/project/FamilyLedger/>`_.
 
 See the full documentation at: https://familyledger.readthedocs.io
