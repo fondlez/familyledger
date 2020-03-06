@@ -58,6 +58,6 @@ The good news is that you do not have to trust them. Since the program is fully 
 The bad news is that the Release executables, as unknown executables, can never be fully trusted and there is an entire industry around attempts at such verification. The best I can do for those specific Release executables is: 
 
 * you can upload the executables to `VirusTotal <https://www.virustotal.com>`_ to check for any glaring issues. Note. complaints about signing certificates obviously do not affect functionality because I am the one who is publishing the code and I provide checksums.
-* offer checksum files so that they cannot be impersonated which you use together with a third-party checksum utility, e.g. 7-Zip's right-click file "CRC SHA" context menu or `Nirsoft's HashMyFiles <https://www.nirsoft.net/utils/hash_my_files.html>`_.
+* offer checksum files so that they cannot be impersonated which you use together with a third-party checksum utility, e.g. 7-Zip's right-click file "CRC SHA" context menu or `Nirsoft's HashMyFiles <https://www.nirsoft.net/utils/hash_my_files.html>`_ or the very fast command line `Microsoft File Checksum Integrity Verifier (FCIV) <https://support.microsoft.com/en-us/help/841290/availability-and-description-of-the-file-checksum-integrity-verifier-u>`_.
 
 If you have any other questions or feedback, please feel free to contact me.
