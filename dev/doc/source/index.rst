@@ -2,7 +2,8 @@
 View World of Warcraft Account Items with Family Ledger
 #######################################################
 
-**Family Ledger** is an application for collecting and viewing in-game item data
+
+`Family Ledger <https://github.com/anuber-Kronos/familyledger>`_ is an application for collecting and viewing in-game item data
 held in World of Warcraft accounts.
 
 It has only been tested with vanilla World of Warcraft patch 1.12 at this time.
