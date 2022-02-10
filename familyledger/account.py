@@ -1,7 +1,7 @@
 """
 A type module for combining item information with account names.
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 from collections import namedtuple
 from itertools import chain

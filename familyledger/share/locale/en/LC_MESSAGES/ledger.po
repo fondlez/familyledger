@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-08 18:35+0000\n"
-"PO-Revision-Date: 2020-02-08 18:37+0000\n"
+"POT-Creation-Date: 2022-02-08 20:52+0000\n"
+"PO-Revision-Date: 2022-02-08 20:52+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.1\n"
-"Last-Translator: fondlez \"Anuber\"-Kronos <fondlez at protonmail.com>\n"
+"Last-Translator: fondlez <fondlez at protonmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: en\n"
 
@@ -91,30 +91,30 @@ msgstr ""
 
 #: possessions.py:73
 msgid "item_icon"
-msgstr "item icon"
+msgstr ""
 
 #: possessions.py:72
 msgid "item_id"
-msgstr "item id"
+msgstr ""
 
 #: dataview.py:81 dataview.py:88 dataview.py:100 dataview.py:106
 msgid "item_link"
-msgstr "item link"
+msgstr ""
 
 #: dataview.py:80 dataview.py:87 dataview.py:94 dataview.py:99 dataview.py:106
 #: possessions.py:72
 msgid "item_name"
-msgstr "item name"
+msgstr ""
 
 #: dataview.py:80 dataview.py:87 dataview.py:94 dataview.py:99
 #: possessions.py:73
 msgid "item_quantity"
-msgstr "item quantity"
+msgstr ""
 
 #: dataview.py:80 dataview.py:87 dataview.py:99 dataview.py:106
 #: possessions.py:73
 msgid "item_rarity"
-msgstr "item rarity"
+msgstr ""
 
 #: dataview.py:87 dataview.py:94
 msgid "location"
@@ -135,4 +135,4 @@ msgstr ""
 
 #: possessions.py:72
 msgid "slot_id"
-msgstr "slot id"
+msgstr ""

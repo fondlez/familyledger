@@ -1,7 +1,7 @@
 """
 A module to support use of the built-in logging facility.
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 import logging
 import sys

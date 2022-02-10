@@ -1,7 +1,7 @@
 """
 A module for parsing command line application arguments.
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 import argparse
 import os
@@ -54,8 +54,8 @@ def options(gui=None):
         version='%(prog)s {}'.format(version.__version__))
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-v', '--verbose', action='store_true')
+    group.add_argument('-q', '--quiet', action='store_true')
     parser.add_argument('-d', '--debug', action='store_true')
-    parser.add_argument('-q', '--quiet', action='store_true')
     parser.add_argument(
         '--log-level', 
         choices=['debug', 'info', 'warning', 'error', 'critical'], 
@@ -71,8 +71,14 @@ def options(gui=None):
         default='twinhead',
         help='item link database (default: twinhead)')
     parser.add_argument(
+        '-r', '--include-realm', metavar='realm', dest='realms', 
+        action='append',
+        help='include data only from a realm with this name '
+        '(multiple options can be added)')
+    parser.add_argument(
         '--include-mail', type=check_bool, default='false',
-        help='include items in mail for views with location ambiguity')
+        help='include items in mail for views with location ambiguity '
+        '(default: false)')
     parser.add_argument(
         '--gold-format', help='output format for gold '
         '(default:"{gold}g {silver:02d}s {copper:02d}c")')

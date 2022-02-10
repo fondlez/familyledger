@@ -3,6 +3,6 @@
 Author
 ======
 
-Family Ledger was originally written by fondlez "Anuber"-Kronos.
+Family Ledger was originally written by fondlez.
 
-* `GitHub <https://github.com/anuber-Kronos/familyledger>`_
+* `GitHub <https://github.com/fondlez/familyledger>`_

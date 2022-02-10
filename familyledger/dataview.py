@@ -1,7 +1,7 @@
 """
 A module for creating user-friendly views of WoW account item data.
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 import re
 from collections import namedtuple
@@ -227,11 +227,12 @@ def create_view(input_data, args, called_view=None):
         DataView: dataview object.
     """
     factory = DataViewFactory()
+    view = 'character'
     if called_view in DATAVIEWS:
-        return factory.dispatch(called_view, input_data, args)
-    if args.view in DATAVIEWS:
-        return factory.dispatch(args.view, input_data, args)
-    return factory.dispatch('character', input_data, args)
+        view = called_view
+    elif args.view in DATAVIEWS:
+        view = args.view
+    return factory.dispatch(view, input_data, args)
 
 
 def gen_view_character(input_data, args):

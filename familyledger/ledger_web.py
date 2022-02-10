@@ -2,7 +2,7 @@
 """
 The driving module for the web version of Family Ledger.
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 import gettext
 import html

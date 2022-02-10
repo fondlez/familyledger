@@ -22,7 +22,11 @@ There are actually two programs (scripts) for this application:
 
 It requires installing the `Possessions addon <https://github.com/Road-block/Possessions>`_ to your World of Warcraft folder.
 
+<<<<<<< HEAD
 Download from Releases: https://github.com/anuber-Kronos/familyledger/releases/latest
+=======
+Download from Releases: https://github.com/fondlez/familyledger/releases/latest
+>>>>>>> master
 
 Alternatively, if you have Python (3.4.4 or higher), it is available via ``pip install familyledger`` from the official Python `PyPi package index <https://pypi.org/project/FamilyLedger/>`_.
 

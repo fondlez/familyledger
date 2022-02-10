@@ -1,7 +1,7 @@
 """
 A module for retrieving and manipulating path information.
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 import fnmatch
 import os

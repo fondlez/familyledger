@@ -1,7 +1,7 @@
 """
 A module for storing and retrieving basic application configuration data.
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 import os
 import pickle
