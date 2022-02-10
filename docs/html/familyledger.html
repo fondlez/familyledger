@@ -37,7 +37,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Family Ledger</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -158,7 +158,7 @@
 <div class="section" id="module-familyledger.commandline">
 <span id="familyledger-commandline-module"></span><h2>familyledger.commandline module</h2>
 <p>A module for parsing command line application arguments.</p>
-<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<p>Copyright (C) 2020, fondlez, fondlez at protonmail.com</p>
 <dl class="data">
 <dt id="familyledger.commandline.CONSOLE_FORMATS">
 <code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">CONSOLE_FORMATS</code><em class="property"> = ('csv', 'tsv', 'unix')</em></dt>
@@ -168,7 +168,7 @@
 <dl class="class">
 <dt id="familyledger.commandline.CheckedArgs">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.commandline.</code><code class="sig-name descname">CheckedArgs</code><span class="sig-paren">(</span><em class="sig-param">wowpath</em>, <em class="sig-param">format</em>, <em class="sig-param">output</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Critical application arguments.</p>
 <dl class="method">
 <dt id="familyledger.commandline.CheckedArgs.format">
@@ -205,7 +205,7 @@
 <dd><p>Checks command line arguments and returns a tuple of validated arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>namedtuple of validated program arguments.</p>
@@ -223,17 +223,17 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Utility intended for use in type validation within arguments of
-<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></a>.</p>
+<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></a>.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>bool_str</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – string representing a boolean (case-insensitive).</p>
+<dd class="field-odd"><p><strong>bool_str</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – string representing a boolean (case-insensitive).</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>boolean value.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><strong>argparse.ArgumentTypeError</strong> – if input does not represent boolean.</p>
@@ -250,15 +250,15 @@ extension corresponding to the selected format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>output_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – output filename.</p></li>
-<li><p><strong>output_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – output format.</p></li>
+<li><p><strong>output_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – output filename.</p></li>
+<li><p><strong>output_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – output format.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>output filename.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -273,16 +273,16 @@ or search mode is selected, then only a subset of formats are available
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>output_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – output filename.</p></li>
-<li><p><strong>requested_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – user format selection.</p></li>
-<li><p><strong>search_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – flag for whether in search mode.</p></li>
+<li><p><strong>output_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – output filename.</p></li>
+<li><p><strong>requested_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – user format selection.</p></li>
+<li><p><strong>search_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – flag for whether in search mode.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>output format.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -296,17 +296,17 @@ allow further validation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Utility intended for use in type validation of string choices within
-arguments of <a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></a>.</p>
+arguments of <a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></a>.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>choice</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – input text.</p>
+<dd class="field-odd"><p><strong>choice</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – input text.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>dataview name or input text.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -326,14 +326,14 @@ path.</p>
 <dd><p>Defines arguments for a command line parser.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>gui</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – flag indicating re-use of command line arguments in
+<dd class="field-odd"><p><strong>gui</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – flag indicating re-use of command line arguments in
 graphical user interface programs.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>commandline argument parser.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -342,11 +342,11 @@ graphical user interface programs.</p>
 <div class="section" id="module-familyledger.config">
 <span id="familyledger-config-module"></span><h2>familyledger.config module</h2>
 <p>A module for storing and retrieving basic application configuration data.</p>
-<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<p>Copyright (C) 2020, fondlez, fondlez at protonmail.com</p>
 <dl class="class">
 <dt id="familyledger.config.Config">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.config.</code><code class="sig-name descname">Config</code><a class="reference internal" href="_modules/familyledger/config.html#Config"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Basic configuration type.</p>
 <dl class="method">
 <dt id="familyledger.config.Config.save">
@@ -359,7 +359,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.config.Singleton">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.config.</code><code class="sig-name descname">Singleton</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/config.html#Singleton"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a></p>
 <p>Singleton metaclass.</p>
 </dd></dl>
 
@@ -367,7 +367,7 @@ graphical user interface programs.</p>
 <div class="section" id="module-familyledger.dataview">
 <span id="familyledger-dataview-module"></span><h2>familyledger.dataview module</h2>
 <p>A module for creating user-friendly views of WoW account item data.</p>
-<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<p>Copyright (C) 2020, fondlez, fondlez at protonmail.com</p>
 <dl class="data">
 <dt id="familyledger.dataview.CONTAINER_LOCATION">
 <code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">CONTAINER_LOCATION</code><em class="property"> = {'bag01': 'bags', 'bag02': 'bags', 'bag03': 'bags', 'bag04': 'bags', 'bag05': 'bank', 'bag06': 'bank', 'bag07': 'bank', 'bag08': 'bank', 'bag09': 'bank', 'bag10': 'bank', 'bank': 'bank', 'inventory': 'bags', 'mail': 'mail', 'player': 'player'}</em></dt>
@@ -377,7 +377,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.dataview.CharacterViewRecord">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">CharacterViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">account</em>, <em class="sig-param">faction</em>, <em class="sig-param">character</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_rarity</em>, <em class="sig-param">item_quantity</em>, <em class="sig-param">item_link</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Data type for the ‘character’ dataview.</p>
 <dl class="method">
 <dt id="familyledger.dataview.CharacterViewRecord.account">
@@ -430,7 +430,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.dataview.DataView">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">DataView</code><span class="sig-paren">(</span><em class="sig-param">header</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#DataView"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Represents a dataview type.</p>
 <dl class="attribute">
 <dt id="familyledger.dataview.DataView.header">
@@ -438,7 +438,7 @@ graphical user interface programs.</p>
 <dd><p>tuple of strings listing the view field names.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)">tuple</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">tuple</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -449,7 +449,7 @@ graphical user interface programs.</p>
 <dd><p>view data generator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -459,7 +459,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.dataview.DataViewFactory">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">DataViewFactory</code><a class="reference internal" href="_modules/familyledger/dataview.html#DataViewFactory"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Factory for DataView objects based on view name.</p>
 <dl class="method">
 <dt id="familyledger.dataview.DataViewFactory.dispatch">
@@ -468,9 +468,9 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>view_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – view name.</p></li>
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>view_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – view name.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -493,7 +493,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.dataview.FactionGoldViewRecord">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">FactionGoldViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">faction</em>, <em class="sig-param">gold</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Data type for the ‘factiongold’ dataview.</p>
 <dl class="method">
 <dt id="familyledger.dataview.FactionGoldViewRecord.faction">
@@ -515,7 +515,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.dataview.GoldViewRecord">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">GoldViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">account</em>, <em class="sig-param">faction</em>, <em class="sig-param">character</em>, <em class="sig-param">gold</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Data type for the ‘gold’ dataview.</p>
 <dl class="method">
 <dt id="familyledger.dataview.GoldViewRecord.account">
@@ -553,7 +553,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.dataview.ItemHolders">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">ItemHolders</code><span class="sig-paren">(</span><em class="sig-param">holder</em>, <em class="sig-param">quantity</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/dataview.html#ItemHolders"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Utility class identifying the character with max. count for an item.</p>
 <dl class="attribute">
 <dt id="familyledger.dataview.ItemHolders.holders">
@@ -561,7 +561,7 @@ graphical user interface programs.</p>
 <dd><p>dicionary with character name key, item quantity value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -579,8 +579,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>holder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – character name.</p></li>
-<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – item count.</p></li>
+<li><p><strong>holder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – character name.</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – item count.</p></li>
 </ul>
 </dd>
 </dl>
@@ -591,7 +591,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.dataview.ItemViewRecord">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">ItemViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_rarity</em>, <em class="sig-param">item_quantity</em>, <em class="sig-param">max</em>, <em class="sig-param">item_link</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Data type for the ‘item’ dataview.</p>
 <dl class="method">
 <dt id="familyledger.dataview.ItemViewRecord.item_link">
@@ -628,7 +628,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.dataview.LocationViewRecord">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">LocationViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">account</em>, <em class="sig-param">faction</em>, <em class="sig-param">character</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_rarity</em>, <em class="sig-param">item_quantity</em>, <em class="sig-param">location</em>, <em class="sig-param">item_link</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Data type for the ‘location’ dataview.</p>
 <dl class="method">
 <dt id="familyledger.dataview.LocationViewRecord.account">
@@ -680,7 +680,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.dataview.MailViewRecord">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">MailViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">account</em>, <em class="sig-param">faction</em>, <em class="sig-param">character</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_quantity</em>, <em class="sig-param">location</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Data type for the ‘mail’ dataview.</p>
 <dl class="method">
 <dt id="familyledger.dataview.MailViewRecord.account">
@@ -728,7 +728,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.dataview.WornViewRecord">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.dataview.</code><code class="sig-name descname">WornViewRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">account</em>, <em class="sig-param">faction</em>, <em class="sig-param">character</em>, <em class="sig-param">slot</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_rarity</em>, <em class="sig-param">item_link</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Data type for the ‘worn’ dataview.</p>
 <dl class="method">
 <dt id="familyledger.dataview.WornViewRecord.account">
@@ -779,8 +779,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -799,8 +799,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>item_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – item id.</p></li>
-<li><p><strong>db_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – format name.</p></li>
+<li><p><strong>item_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – item id.</p></li>
+<li><p><strong>db_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – format name.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -819,8 +819,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -836,8 +836,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -853,8 +853,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -870,8 +870,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -887,8 +887,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -904,8 +904,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -921,8 +921,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -938,8 +938,8 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -955,15 +955,15 @@ graphical user interface programs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>input_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a>) – raw input data generator.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>filtered view data based on a query.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -976,7 +976,7 @@ graphical user interface programs.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_data</strong> – generator for list of tuples or a sequence of tuples.</p></li>
-<li><p><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – regular expression pattern.</p></li>
+<li><p><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – regular expression pattern.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -989,7 +989,7 @@ graphical user interface programs.</p>
 <div class="section" id="module-familyledger.ledger">
 <span id="familyledger-ledger-module"></span><h2>familyledger.ledger module</h2>
 <p>The driving module for the command line version of Family Ledger.</p>
-<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<p>Copyright (C) 2020, fondlez, fondlez at protonmail.com</p>
 <dl class="data">
 <dt id="familyledger.ledger.EXCEL_SHEETS">
 <code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">EXCEL_SHEETS</code><em class="property"> = {'about': ExcelSheet(title='About This Data', title_cols=2), 'character': ExcelSheet(title='Items Per Character', title_cols=3), 'factiongold': ExcelSheet(title='Gold Per Faction', title_cols=3), 'gold': ExcelSheet(title='Gold Per Character', title_cols=3), 'item': ExcelSheet(title='Items Per Server', title_cols=2), 'location': ExcelSheet(title='Items Per Character - Location', title_cols=4), 'mail': ExcelSheet(title='Items Per Character - Mail', title_cols=4), 'raw': ExcelSheet(title='Original Item Data', title_cols=3), 'worn': ExcelSheet(title='Items Per Character - Worn', title_cols=4)}</em></dt>
@@ -1005,7 +1005,7 @@ graphical user interface programs.</p>
 <dl class="class">
 <dt id="familyledger.ledger.ExcelSheet">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.ledger.</code><code class="sig-name descname">ExcelSheet</code><span class="sig-paren">(</span><em class="sig-param">title</em>, <em class="sig-param">title_cols</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Data type for Excel sheet settings.</p>
 <dl class="method">
 <dt id="familyledger.ledger.ExcelSheet.title">
@@ -1034,12 +1034,12 @@ output, if the data is not from a ‘raw’ view.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>output_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/io.html#io.IOBase" title="(in Python v3.8)"><em>io.IOBase</em></a>) – output file.</p></li>
-<li><p><strong>header</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – header fields.</p></li>
+<li><p><strong>output_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/io.html#io.IOBase" title="(in Python v3.10)"><em>io.IOBase</em></a>) – output file.</p></li>
+<li><p><strong>header</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – header fields.</p></li>
 <li><p><strong>row_data</strong> – iterable containing tuples.</p></li>
 <li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
 program arguments.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1057,10 +1057,10 @@ Excel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – output file name.</p></li>
+<li><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – output file name.</p></li>
 <li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
 program arguments.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1079,7 +1079,7 @@ program arguments.</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
 program arguments.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1096,7 +1096,7 @@ path itself of the data file, then added back into the item data structure.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
 program arguments.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
@@ -1120,7 +1120,7 @@ program arguments.</p></li>
 <dd><p>Starts the main application.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1134,7 +1134,7 @@ program arguments.</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>checked_args</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">commandline.CheckedArgs</span></code>) – namedtuple of validated
 program arguments.</p></li>
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1146,7 +1146,7 @@ program arguments.</p></li>
 <dd><p>Sets up the debugging context for the main application.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1165,7 +1165,7 @@ program arguments.</p></li>
 The presence of correctly named addon data files at the WoW path is checked.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
@@ -1190,7 +1190,7 @@ The presence of correctly named addon data files at the WoW path is checked.</p>
 <div class="section" id="module-familyledger.ledger_web">
 <span id="familyledger-ledger-web-module"></span><h2>familyledger.ledger_web module</h2>
 <p>The driving module for the web version of Family Ledger.</p>
-<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<p>Copyright (C) 2020, fondlez, fondlez at protonmail.com</p>
 <dl class="class">
 <dt id="familyledger.ledger_web.LedgerWeb">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.ledger_web.</code><code class="sig-name descname">LedgerWeb</code><span class="sig-paren">(</span><em class="sig-param">*pargs</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/ledger_web.html#LedgerWeb"><span class="viewcode-link">[source]</span></a></dt>
@@ -1259,7 +1259,7 @@ is activated and the search button pressed action is emulated.</p>
 <p>The search for the pattern is case-insensitive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – string containing a regular expression.</p>
+<dd class="field-odd"><p><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – string containing a regular expression.</p>
 </dd>
 <dt class="field-even">Yields</dt>
 <dd class="field-even"><p><em>iterable</em> – matching row from iterable view data.</p>
@@ -1273,7 +1273,7 @@ is activated and the search button pressed action is emulated.</p>
 <dd><p>Sorts nested attributed data by attribute name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>field</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – attribute name.</p>
+<dd class="field-odd"><p><strong>field</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – attribute name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1304,13 +1304,13 @@ is activated and the search button pressed action is emulated.</p>
 <dd><p>Returns whether input text starts with a simple and common URL type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>link</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – potential URL.</p>
+<dd class="field-odd"><p><strong>link</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – potential URL.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>True if URL detected, False otherwise.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1326,7 +1326,7 @@ is activated and the search button pressed action is emulated.</p>
 <dd><p>Starts the main application.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1337,7 +1337,7 @@ is activated and the search button pressed action is emulated.</p>
 <dd><p>Sets up the debugging context for the main application.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argparse.Namespace</span></code></a>) – program arguments.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1351,7 +1351,7 @@ is activated and the search button pressed action is emulated.</p>
 data are written in the Lua language. Therefore, this module uses a third-party
 Lua expression parser (<a class="reference external" href="https://github.com/SirAnthony/slpp">slpp</a>) to get data into Python. The data is flattened
 and reformatted for higher level processing by users of this module.</p>
-<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<p>Copyright (C) 2020, fondlez, fondlez at protonmail.com</p>
 <dl class="data">
 <dt id="familyledger.possessions.CONTAINER_NAME">
 <code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">CONTAINER_NAME</code><em class="property"> = {-3: 'mail', -2: 'player', -1: 'bank', 0: 'inventory', 1: 'bag01', 2: 'bag02', 3: 'bag03', 4: 'bag04', 5: 'bag05', 6: 'bag06', 7: 'bag07', 8: 'bag08', 9: 'bag09', 10: 'bag10'}</em></dt>
@@ -1373,7 +1373,7 @@ and reformatted for higher level processing by users of this module.</p>
 <dl class="class">
 <dt id="familyledger.possessions.ItemRecord">
 <em class="property">class </em><code class="sig-prename descclassname">familyledger.possessions.</code><code class="sig-name descname">ItemRecord</code><span class="sig-paren">(</span><em class="sig-param">realm</em>, <em class="sig-param">character</em>, <em class="sig-param">faction</em>, <em class="sig-param">gold</em>, <em class="sig-param">container</em>, <em class="sig-param">slot_id</em>, <em class="sig-param">item_id</em>, <em class="sig-param">item_name</em>, <em class="sig-param">item_icon</em>, <em class="sig-param">item_quantity</em>, <em class="sig-param">item_rarity</em><span class="sig-paren">)</span></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Data type capturing the raw item data from the Possessions addon.</p>
 <dl class="method">
 <dt id="familyledger.possessions.ItemRecord.character">
@@ -1444,13 +1444,13 @@ and reformatted for higher level processing by users of this module.</p>
 <dd><p>Checks for the existence of Possessions addon data files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>wowpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – path to WoW folder.</p>
+<dd class="field-odd"><p><strong>wowpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – path to WoW folder.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>True if files found, False otherwise.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1461,7 +1461,7 @@ and reformatted for higher level processing by users of this module.</p>
 <dd><p>Filters out non-realm, non-item information from the raw data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>account_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – Possessions addon data which includes non-item data</p>
+<dd class="field-odd"><p><strong>account_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a>) – Possessions addon data which includes non-item data</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1472,14 +1472,14 @@ and reformatted for higher level processing by users of this module.</p>
 <dd><p>Returns the path information for the Possessions addon raw data files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>wowpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – path to WoW folder.</p>
+<dd class="field-odd"><p><strong>wowpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – path to WoW folder.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>paths matching Possessions
 addon data files.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1490,7 +1490,7 @@ addon data files.</p>
 <dd><p>Yields item data for output.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>account_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – converted item data for all characters.</p>
+<dd class="field-odd"><p><strong>account_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a>) – converted item data for all characters.</p>
 </dd>
 <dt class="field-even">Yields</dt>
 <dd class="field-even"><p><a class="reference internal" href="#familyledger.possessions.ItemRecord" title="familyledger.possessions.ItemRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ItemRecord</span></code></a> – individual item information.</p>
@@ -1504,14 +1504,14 @@ addon data files.</p>
 <dd><p>Converts the Lua text to a Lua expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>lua_statement</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Lua statement containing a single known variable
+<dd class="field-odd"><p><strong>lua_statement</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Lua statement containing a single known variable
 assignment.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>text containing a Lua expression.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1543,13 +1543,13 @@ function translates the Lua input into a Python expression, evaluates it
 and so produces Python item data in its ‘raw’ format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>lua_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – text containing a Lua statement.</p>
+<dd class="field-odd"><p><strong>lua_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – text containing a Lua statement.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>item data in raw format.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1560,14 +1560,14 @@ and so produces Python item data in its ‘raw’ format.</p>
 <dd><p>Reads a data file containing a Lua expression and returns item data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – data file containing a Lua expression.</p>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – data file containing a Lua expression.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>generator of <a class="reference internal" href="#familyledger.possessions.ItemRecord" title="familyledger.possessions.ItemRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ItemRecord</span></code></a> item
 information.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/types.html#types.GeneratorType" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">types.GeneratorType</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1576,7 +1576,7 @@ information.</p>
 <div class="section" id="module-familyledger.version">
 <span id="familyledger-version-module"></span><h2>familyledger.version module</h2>
 <p>A module to supply the application version</p>
-<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<p>Copyright (C) 2020, fondlez, fondlez at protonmail.com</p>
 <dl class="function">
 <dt id="familyledger.version.get_version">
 <code class="sig-prename descclassname">familyledger.version.</code><code class="sig-name descname">get_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/familyledger/version.html#get_version"><span class="viewcode-link">[source]</span></a></dt>
@@ -1586,7 +1586,7 @@ information.</p>
 </div>
 <div class="section" id="module-familyledger">
 <span id="module-contents"></span><h2>Module contents</h2>
-<p>Copyright (C) 2020, fondlez “Anuber”-Kronos, fondlez at protonmail.com</p>
+<p>Copyright (C) 2020, fondlez, fondlez at protonmail.com</p>
 </div>
 </div>
 
@@ -1602,7 +1602,7 @@ information.</p>
       
     </p>
     <p>
-        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+        &copy; Copyright 2020, fondlez.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
     </p>
   </div>

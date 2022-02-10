@@ -50,4 +50,4 @@ Use the official Family Ledger Issue tracker on GitHub
 ------------------------------------------------------
 
 The official Family Ledger 
-`Issue tracker is on GitHub <https://github.com/anuber-Kronos/familyledger/issues>`_.
+`Issue tracker is on GitHub <https://github.com/fondlez/familyledger/issues>`_.

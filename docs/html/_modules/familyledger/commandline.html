@@ -37,7 +37,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Family Ledger</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -124,7 +124,7 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">A module for parsing command line application arguments.</span>
 
-<span class="sd">Copyright (C) 2020, fondlez &quot;Anuber&quot;-Kronos, fondlez at protonmail.com</span>
+<span class="sd">Copyright (C) 2020, fondlez, fondlez at protonmail.com</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -177,8 +177,8 @@
         <span class="n">version</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(prog)s</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
     <span class="n">group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
     <span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-v&#39;</span><span class="p">,</span> <span class="s1">&#39;--verbose&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-q&#39;</span><span class="p">,</span> <span class="s1">&#39;--quiet&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="s1">&#39;--debug&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-q&#39;</span><span class="p">,</span> <span class="s1">&#39;--quiet&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s1">&#39;--log-level&#39;</span><span class="p">,</span> 
         <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;debug&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;warning&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="s1">&#39;critical&#39;</span><span class="p">],</span> 
@@ -194,8 +194,14 @@
         <span class="n">default</span><span class="o">=</span><span class="s1">&#39;twinhead&#39;</span><span class="p">,</span>
         <span class="n">help</span><span class="o">=</span><span class="s1">&#39;item link database (default: twinhead)&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="s1">&#39;--include-realm&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;realm&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;realms&#39;</span><span class="p">,</span> 
+        <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;include data only from a realm with this name &#39;</span>
+        <span class="s1">&#39;(multiple options can be added)&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s1">&#39;--include-mail&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">check_bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;false&#39;</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;include items in mail for views with location ambiguity&#39;</span><span class="p">)</span>
+        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;include items in mail for views with location ambiguity &#39;</span>
+        <span class="s1">&#39;(default: false)&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s1">&#39;--gold-format&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;output format for gold &#39;</span>
         <span class="s1">&#39;(default:&quot;</span><span class="si">{gold}</span><span class="s1">g </span><span class="si">{silver:02d}</span><span class="s1">s </span><span class="si">{copper:02d}</span><span class="s1">c&quot;)&#39;</span><span class="p">)</span>
@@ -359,7 +365,7 @@
       
     </p>
     <p>
-        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+        &copy; Copyright 2020, fondlez.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
     </p>
   </div>

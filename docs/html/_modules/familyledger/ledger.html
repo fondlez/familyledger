@@ -37,7 +37,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Family Ledger</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -125,7 +125,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">The driving module for the command line version of Family Ledger.</span>
 
-<span class="sd">Copyright (C) 2020, fondlez &quot;Anuber&quot;-Kronos, fondlez at protonmail.com</span>
+<span class="sd">Copyright (C) 2020, fondlez, fondlez at protonmail.com</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
@@ -336,13 +336,19 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">log</span> <span class="o">=</span> <span class="n">get_log</span><span class="p">(</span><span class="s1">&#39;ledger&#39;</span><span class="p">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Reading data files:&#39;</span><span class="p">)</span>
+    <span class="n">realms</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">realms</span> <span class="ow">and</span> <span class="p">{</span><span class="n">x</span><span class="o">.</span><span class="n">casefold</span><span class="p">():</span><span class="kc">True</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">realms</span><span class="p">}</span>
     <span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">possessions</span><span class="o">.</span><span class="n">find_possessions</span><span class="p">(</span><span class="n">checked_args</span><span class="o">.</span><span class="n">wowpath</span><span class="p">):</span>
         <span class="n">account_name</span> <span class="o">=</span> <span class="n">_path</span><span class="o">.</span><span class="n">splitall</span><span class="p">(</span><span class="n">filepath</span><span class="p">)[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">possessions</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
         <span class="n">vprint</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">filepath</span><span class="p">)</span>
         <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;* </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">filepath</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">account</span><span class="o">.</span><span class="n">AccountItemRecord</span><span class="p">(</span><span class="o">*</span><span class="n">chain</span><span class="p">([</span><span class="n">account_name</span><span class="p">],</span> <span class="n">row</span><span class="p">))</span></div>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">realms</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">account</span><span class="o">.</span><span class="n">AccountItemRecord</span><span class="p">(</span><span class="o">*</span><span class="n">chain</span><span class="p">([</span><span class="n">account_name</span><span class="p">],</span> <span class="n">row</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">realm</span> <span class="ow">and</span> <span class="n">row</span><span class="o">.</span><span class="n">realm</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span> <span class="ow">in</span> <span class="n">realms</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">account</span><span class="o">.</span><span class="n">AccountItemRecord</span><span class="p">(</span><span class="o">*</span><span class="n">chain</span><span class="p">([</span><span class="n">account_name</span><span class="p">],</span> <span class="n">row</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="excel_output"><a class="viewcode-back" href="../../familyledger.html#familyledger.ledger.excel_output">[docs]</a><span class="k">def</span> <span class="nf">excel_output</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">checked_args</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
@@ -483,8 +489,8 @@
     <span class="n">about_data</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Application&#39;</span><span class="p">),</span> <span class="s1">&#39;Family Ledger&#39;</span><span class="p">),</span>
         <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Version&#39;</span><span class="p">),</span> <span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Author&#39;</span><span class="p">),</span> <span class="s1">&#39;fondlez &quot;Anuber&quot;-Kronos, fondlez at protonmail.com&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Source&#39;</span><span class="p">),</span> <span class="s1">&#39;http://github.com/anuber-Kronos/familyledger&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Author&#39;</span><span class="p">),</span> <span class="s1">&#39;fondlez, fondlez at protonmail.com&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Source&#39;</span><span class="p">),</span> <span class="s1">&#39;http://github.com/fondlez/familyledger&#39;</span><span class="p">),</span>
         <span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Credits&#39;</span><span class="p">),</span> 
             <span class="s1">&#39;Possessions addon (https://github.com/Road-block/Possessions)&#39;</span><span class="p">),</span>
         <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;slpp module (https://github.com/SirAnthony/slpp)&#39;</span><span class="p">),</span>
@@ -590,7 +596,7 @@
       
     </p>
     <p>
-        &copy; Copyright 2020, fondlez &#34;Anuber&#34;-Kronos.<br/>
+        &copy; Copyright 2020, fondlez.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
     </p>
   </div>
