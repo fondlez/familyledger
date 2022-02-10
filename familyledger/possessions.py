@@ -10,7 +10,7 @@ and reformatted for higher level processing by users of this module.
 .. _Possessions: https://github.com/Road-block/Possessions
 .. _slpp: https://github.com/SirAnthony/slpp
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 import os
 import re

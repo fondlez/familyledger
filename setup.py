@@ -1,29 +1,41 @@
 """
-setuptools entrypoint
+setuptools entry point
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 import os
+import sys
+
 from setuptools import setup, find_packages
 
 
-with open('familyledger/VERSION', 'rt') as version_file:
-    __version__ = version_file.read().strip()
+def read(relative_filepath, strip=None, **kwargs):
+    this_filedir = os.path.dirname(__file__)
+    with open(
+        os.path.join(this_filedir, relative_filepath),
+        encoding=kwargs.get('encoding', 'utf8'),
+    ) as fh:
+        content = fh.read()
+        if strip:
+            content.strip()
+        return content
 
-with open('README.rst', 'rt') as fh:
-    long_description = fh.read()
 
 setup(
     name='FamilyLedger',
-    version=__version__,
-    author='fondlez "Anuber"-Kronos',
+    version=read('familyledger/VERSION', strip=True),
+    author='fondlez',
     author_email='fondlez@protonmail.com',
-    url='https://github.com/anuber-Kronos/familyledger',
+    url='https://github.com/fondlez/familyledger',
     description='Family Ledger is an application for collecting and viewing '
         'in-game item data held in World of Warcraft accounts.',
-    long_description = long_description,
-    download_url='https://github.com/anuber-Kronos/familyledger',
-    packages=['familyledger', 'familyledger.utils', 'familyledger.slpp'],
+    long_description = read('README.rst'),
+    download_url='https://github.com/fondlez/familyledger',
+    packages=[
+        'familyledger', 
+        'familyledger.utils', 
+        'familyledger.slpp',
+    ],
     include_package_data=True,
     entry_points={
         'console_scripts': [

@@ -1,7 +1,7 @@
 """
 A module containing utilities for searching and manipulating iterables.
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 from operator import attrgetter
 

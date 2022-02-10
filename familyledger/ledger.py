@@ -2,7 +2,7 @@
 """
 The driving module for the command line version of Family Ledger.
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 import csv
 from datetime import datetime
@@ -213,13 +213,19 @@ def gen_possessions_data(checked_args, args):
     """
     log = get_log('ledger')
     log.info('Reading data files:')
+    realms = args.realms and {x.casefold():True for x in args.realms}
     for filepath in possessions.find_possessions(checked_args.wowpath):
         account_name = _path.splitall(filepath)[-3]
         data = possessions.read(filepath)
         vprint(args, filepath)
         log.info('* %s' % filepath)
-        for row in data:
-            yield account.AccountItemRecord(*chain([account_name], row))
+        if not realms:
+            for row in data:
+                yield account.AccountItemRecord(*chain([account_name], row))
+        else:
+            for row in data:
+                if row.realm and row.realm.casefold() in realms:
+                    yield account.AccountItemRecord(*chain([account_name], row))
 
 
 def excel_output(output, checked_args, args):
@@ -360,8 +366,8 @@ def excel_output(output, checked_args, args):
     about_data = [
         (_('Application'), 'Family Ledger'),
         (_('Version'), version.__version__),
-        (_('Author'), 'fondlez "Anuber"-Kronos, fondlez at protonmail.com'),
-        (_('Source'), 'http://github.com/anuber-Kronos/familyledger'),
+        (_('Author'), 'fondlez, fondlez at protonmail.com'),
+        (_('Source'), 'http://github.com/fondlez/familyledger'),
         (_('Credits'), 
             'Possessions addon (https://github.com/Road-block/Possessions)'),
         ('', 'slpp module (https://github.com/SirAnthony/slpp)'),

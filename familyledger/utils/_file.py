@@ -1,7 +1,7 @@
 """
 A module for filesystem utilities.
 
-Copyright (C) 2020, fondlez "Anuber"-Kronos, fondlez at protonmail.com
+Copyright (C) 2020, fondlez, fondlez at protonmail.com
 """
 from contextlib import contextmanager
 import errno
